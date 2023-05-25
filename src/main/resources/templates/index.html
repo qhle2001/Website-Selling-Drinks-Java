@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+</head>
+<body>
+<!--    <div class="container">-->
+<!--        <div class="left">-->
+<!--            <h1>Left Content</h1>-->
+<!--            <p>This is the left section of the page.</p>-->
+<!--        </div>-->
+<!--        <div class="right">-->
+<!--            <h1>Right Content</h1>-->
+<!--            <p>This is the right section of the page.</p>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <img th:src="@{/img/Screenshot 2023-03-01 214624.png}" height="706" width="605"/>-->
+    <div class="container">
+        <header>
+            <a href="#"><img th:src = "@{/img/Screenshot 2023-03-01 214624.png}" height="100" width="100" alt=""></a>
+        </header>
+        <nav>
+            <div class="ui-menu">
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Đào tao</a></li>
+                    <li><a href="#">Hoạt động sinh viên</a></li>
+                    <li><a href="#">Tuyển sinh</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="search" placeholder="Search...">
+                <button>Tìm hiếm</button>
+            </div>
+        </nav>
+        <div id="slide">
+            <a href=""><img th:src="@{/img/Screenshot 2023-03-01 214624.png}" width="200" height="auto"/></a>
+        </div>
+        <article>
+            <h3> Tin tức học tập</h3>
+            <div class="new_list">
+                <div class="news_item">
+                    <h4>Sinh viên FPT giành quán quân</h4>
+                    <img th:src="@{/img/Screenshot 2023-03-01 214624.png}"width="200" height="auto"/>
+                    <div class="content">
+                        miêu tả ngắn
+                    </div>
+                </div>
+                <div class="news_item">
+                    <h4>Sinh viên FPT giành quán quân</h4>
+                    <img th:src="@{/img/Screenshot 2023-03-01 214624.png}"width="200" height="auto"/>
+                    <div class="content">
+                        miêu tả ngắn
+                    </div>
+                </div>
+                <div class="news_item" id="fix">
+                    <h4>Sinh viên FPT giành quán quân</h4>
+                    <img th:src="@{/img/Screenshot 2023-03-01 214624.png}"width="200" height="auto"/>
+                    <div class="content">
+                        mô tả ngắn
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article>
+
+        </article>
+        <footer>
+
+        </footer>
+    </div>
+</body>
+</html>

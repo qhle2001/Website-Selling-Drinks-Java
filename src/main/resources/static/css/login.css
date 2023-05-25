@@ -1,0 +1,79 @@
+/**{*/
+/*    margin: 0px;*/
+/*    padding: 0px;*/
+/*    box-sizing: border-box;*/
+/*}*/
+body{
+    background-color: #1c8ef8;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login{
+    width: 300px;
+    height: 350px;
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: center;
+}
+.login h2{
+    display: inline-block;
+    color: grey;
+}
+.login input{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.pass{
+    padding-left: 20px;
+    /*margin-bottom: 10px;*/
+    /*margin-top: 5px;*/
+}
+/*.pass{*/
+/*    position: relative;*/
+/*    padding-left: 20px;*/
+/*    */
+/*}*/
+/*#togglePassword{*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    right: 10%;*/
+/*    transform: translateY(-50%);*/
+/*    cursor: pointer;*/
+/*}*/
+.check input{
+    width: 10px;
+    height: 10px;
+}
+.login button{
+    width: 220px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #167bff;
+    color: white;
+}
+p{
+    display: inline-block;
+    float: left;
+    padding-left: 40px;
+    margin: 0px;
+}
+.check{
+    float: left;
+    padding-left: 40px;
+
+}
+.link a{
+    float: right;
+    padding-right: 40px;
+    text-decoration: none;
+    margin-top: 10px;
+}

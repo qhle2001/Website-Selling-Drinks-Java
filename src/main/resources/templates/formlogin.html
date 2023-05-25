@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>membership-login</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/formlogin.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" class="css">
+</head>
+<body>
+  <div id="wrapper">
+    <form action="" id="form-login">
+      <h1 class="form-heading">Form đăng nhập</h1>
+      <div class="formgroup">
+        <i class="fas fa-user"></i>
+        <input type="text" class="form-input" placeholder="Tên đăng nhập">
+      </div>
+      <div class="formgroup">
+        <i class="fas fa-key"></i>
+        <input type="password" class="form-input" placeholder="Mật khẩu">
+        <div id="eye">
+          <i class="far fa-eye-slash"></i>
+        </div>
+      </div>
+      <div class="check">
+        <input type="checkbox"> Remember me
+      </div>
+      <input type="submit" value="Đăng nhập" class="form-submit">
+      <div class="link">
+        <a href="#" class="create-account"> Create Account</a>
+        <a href="#" class="forgot-password"> Forgot Password</a>
+      </div>
+    </form>
+  </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="../static/js/login.js"></script>
+</html>
