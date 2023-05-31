@@ -4,7 +4,7 @@ public class ProductDTO extends AbstracDTO<ProductDTO>{
     private String title;
     private String content;
     private String shortdescription;
-    private String categoryid;
+    private String categoryCode;
     private String thumbnall;
 
     public String getTitle() {
@@ -31,12 +31,13 @@ public class ProductDTO extends AbstracDTO<ProductDTO>{
         this.shortdescription = shortdescription;
     }
 
-    public String getCategoryid() {
-        return categoryid;
+
+    public String getCategoryCode() {
+        return categoryCode;
     }
 
-    public void setCategoryid(String categoryid) {
-        this.categoryid = categoryid;
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
     }
 
     public String getThumbnall() {

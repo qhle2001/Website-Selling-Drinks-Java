@@ -17,7 +17,7 @@ public abstract class BaseEntity {
     private String modifiedBy;
     @Column
     private Date modifiedDate;
-    private Long getId(){
+    public Long getId(){
         return id;
     }
 

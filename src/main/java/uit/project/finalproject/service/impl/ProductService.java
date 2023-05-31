@@ -6,13 +6,13 @@ import uit.project.finalproject.dto.ProductDTO;
 import uit.project.finalproject.entity.CategoryEntity;
 import uit.project.finalproject.entity.ProductEntity;
 import uit.project.finalproject.filter.repository.CategoryRepository;
-import uit.project.finalproject.filter.repository.ProductRepopsitory;
+import uit.project.finalproject.filter.repository.ProductRepository;
 import uit.project.finalproject.service.iProductservice;
 
 @Service
 public class ProductService implements iProductservice {
     @Autowired
-    private ProductRepopsitory productRepopsitory;
+    private ProductRepository productRepository;
     @Autowired
     private CategoryRepository categoryRepository;
     @Autowired
@@ -21,25 +21,15 @@ public class ProductService implements iProductservice {
     public ProductDTO save(ProductDTO productDTO) {
         ProductEntity productEntity = new ProductEntity();
         if(productDTO.getId() != null){
-            ProductEntity oldProductEntity = ProductRepopsitory.findOne(productDTO.getId());
+            ProductEntity oldProductEntity = productRepository.findById(productDTO.getId()).orElse(null);
             productEntity = productConverter.toEntity(productDTO, oldProductEntity);
         }
         else{
             productEntity = productConverter.toEntity(productDTO);
         }
-        CategoryEntity categoryEntity = categoryRepository.findOneByCode(productDTO.getCategoryid());
+        CategoryEntity categoryEntity = categoryRepository.findOneByCode(productDTO.getCategoryCode());
         productEntity.setCategr(categoryEntity);
-        productEntity = productRepopsitory.save(productEntity);
+        productEntity = productRepository.save(productEntity);
         return productConverter.toDTO(productEntity);
     }
-
-//    @Override
-//    public ProductDTO update(ProductDTO productDTO) {
-//        ProductEntity oldProductEntity = ProductRepopsitory.findOne(productDTO.getId());
-//        ProductEntity productEntity = productConverter.toEntity(productDTO, oldProductEntity);
-//        CategoryEntity categoryEntity = categoryRepository.findOneByCode(productDTO.getCategoryid());
-//        productEntity.setCategr(categoryEntity);
-//        productEntity = productRepopsitory.save(productEntity);
-//        return productConverter.toDTO(productEntity);
-//    }
 }
