@@ -1,8 +1,6 @@
 package uit.project.finalproject.dto;
 
-import jakarta.persistence.Column;
-
-public class AccDTO extends AbstracDTO{
+public class AccDTO extends AbstracDTO<AccDTO>{
     private String username;
     private String password;
     private String typeaccCode;

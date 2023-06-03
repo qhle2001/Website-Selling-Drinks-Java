@@ -1,37 +1,16 @@
-package uit.project.finalproject.entity;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
+package uit.project.finalproject.dto;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "customer")
-public class CustomerEntity extends BaseEntity{
-    @Column
+public class CustomerDTO extends AbstracDTO<CustomerDTO>{
     private String firstname;
-    @Column
     private String lastname;
-    @Column
     private Date dayofbirth;
-    @Column
-    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date participantdate;
-    @Column
-    private String picture;
-    @Column
     private String homeaddress;
-    @OneToOne
-    @JoinColumn(name = "account_id")
-    private AccEntity account;
+    private String picture;
+    private String username;
 
-    public AccEntity getAccount() {
-        return account;
-    }
-
-    public void setAccount(AccEntity account) {
-        this.account = account;
-    }
     public String getFirstname() {
         return firstname;
     }
@@ -78,5 +57,13 @@ public class CustomerEntity extends BaseEntity{
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
