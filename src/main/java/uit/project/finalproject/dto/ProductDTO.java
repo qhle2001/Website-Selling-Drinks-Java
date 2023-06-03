@@ -2,6 +2,7 @@ package uit.project.finalproject.dto;
 
 public class ProductDTO extends AbstracDTO<ProductDTO>{
     private String title;
+    private String size;
     private String content;
     private String shortdescription;
     private String categoryCode;
@@ -46,5 +47,13 @@ public class ProductDTO extends AbstracDTO<ProductDTO>{
 
     public void setThumbnall(String thumbnall) {
         this.thumbnall = thumbnall;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 }

@@ -9,6 +9,8 @@ public class ProductEntity extends BaseEntity{
     @Column(name = "name")
     private String title;
     @Column
+    private String size;
+    @Column
     private String thumbnall;
     @Column
     private String shortdescription;
@@ -56,5 +58,13 @@ public class ProductEntity extends BaseEntity{
 
     public void setCategr(CategoryEntity categr) {
         this.categr = categr;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 }

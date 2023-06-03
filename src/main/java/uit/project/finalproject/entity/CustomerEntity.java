@@ -1,17 +1,14 @@
 package uit.project.finalproject.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "listname")
-public class ListnameEntity extends BaseEntity{
+@Table(name = "customer")
+public class CustomerEntity extends BaseEntity{
     @Column
     private String username;
     @Column
@@ -23,11 +20,20 @@ public class ListnameEntity extends BaseEntity{
     @Column
     private Date participantdate;
     @Column
+    private String picture;
+    @Column
     private String homeaddress;
-    @OneToMany(
-            mappedBy = "listnames"
-    )
-    private List<AccEntity> account = new ArrayList<>();
+    @OneToOne
+    @JoinColumn(name = "account_id")
+    private AccEntity account;
+
+    public AccEntity getAccount() {
+        return account;
+    }
+
+    public void setAccount(AccEntity account) {
+        this.account = account;
+    }
 
     public String getUsername() {
         return username;
@@ -77,11 +83,11 @@ public class ListnameEntity extends BaseEntity{
         this.homeaddress = homeaddress;
     }
 
-    public List<AccEntity> getAccount() {
-        return account;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setAccount(List<AccEntity> account) {
-        this.account = account;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

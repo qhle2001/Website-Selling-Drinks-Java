@@ -2,6 +2,9 @@ package uit.project.finalproject.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "acc")
 public class AccEntity extends BaseEntity{
@@ -9,11 +12,39 @@ public class AccEntity extends BaseEntity{
     private String username;
     @Column
     private String password;
-    @Column
-    private String typeacc;
+    @OneToOne(mappedBy = "account")
+    private CustomerEntity customer;
     @ManyToOne
-    @JoinColumn(name = "listname_id")
-    private ListnameEntity listnames;
+    @JoinColumn(name = "typeacc_id")
+    private TypeAccEntity customer_account;
+    @OneToMany(
+            mappedBy = "account"
+    )
+    private List<CommentEntity> account = new ArrayList<>();
+
+    public List<CommentEntity> getAccount() {
+        return account;
+    }
+
+    public void setAccount(List<CommentEntity> account) {
+        this.account = account;
+    }
+
+    public TypeAccEntity getCustomer_account() {
+        return customer_account;
+    }
+
+    public void setCustomer_account(TypeAccEntity customer_account) {
+        this.customer_account = customer_account;
+    }
+
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
+    }
 
     public String getUsername() {
         return username;
@@ -31,19 +62,4 @@ public class AccEntity extends BaseEntity{
         this.password = password;
     }
 
-    public String getTypeacc() {
-        return typeacc;
-    }
-
-    public void setTypeacc(String typeacc) {
-        this.typeacc = typeacc;
-    }
-
-    public ListnameEntity getListnames() {
-        return listnames;
-    }
-
-    public void setListnames(ListnameEntity listnames) {
-        this.listnames = listnames;
-    }
 }
