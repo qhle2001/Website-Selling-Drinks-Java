@@ -8,6 +8,7 @@ public class CommentConverter {
     public CommentEntity toEntity(CommentDTO dto){
         CommentEntity entity = new CommentEntity();
         entity.setContent(dto.getContent());
+        entity.setJudge(dto.getJudge());
         return entity;
     }
 
@@ -17,6 +18,7 @@ public class CommentConverter {
             dto.setId(entity.getId());
         }
         dto.setContent(entity.getContent());
+        dto.setJudge(entity.getJudge());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
@@ -26,6 +28,7 @@ public class CommentConverter {
 
     public CommentEntity toEntity(CommentDTO dto, CommentEntity entity){
         entity.setContent(dto.getContent());
+        entity.setJudge(dto.getJudge());
         return entity;
     }
 }

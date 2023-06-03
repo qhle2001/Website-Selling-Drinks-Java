@@ -2,6 +2,7 @@ package uit.project.finalproject.dto;
 
 public class CommentDTO extends AbstracDTO<CommentDTO>{
     private String content;
+    private String judge;
     private String username;
 
     public String getContent() {
@@ -10,6 +11,14 @@ public class CommentDTO extends AbstracDTO<CommentDTO>{
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getJudge() {
+        return judge;
+    }
+
+    public void setJudge(String judge) {
+        this.judge = judge;
     }
 
     public String getUsername() {
