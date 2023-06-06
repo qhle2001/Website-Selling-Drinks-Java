@@ -99,12 +99,7 @@ header.sticky #menu .item a{
 }
 #container {
     width: 100%;
-    /*background-image :url("../img/bg2.png");*/
-    /*min-height: 463px;*/
     margin-top:65px;
-    /*display: flex;*/
-    /*padding:0px 133px;*/
-    /*position:relative;*/
 }
 #product-table {
     width: 100%;

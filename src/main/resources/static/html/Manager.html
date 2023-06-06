@@ -39,7 +39,32 @@
             </div>
         </header>
         <div id="container">
-            <div id="container-account"></div>
+            <div id="container-account">
+                <h1>Product-list</h1>
+                <table id="account-table">
+                    <thead>
+                    <tr>
+<!--                        <th></th>-->
+                        <th>ID</th>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>Type Account</th>
+                        <th>Created Date</th>
+                        <th>Modified Date</th>
+<!--                        <th>Actions</th>-->
+                    </tr>
+                    </thead>
+                    <tbody id="account-list"></tbody>
+                </table>
+                <div id="container-button-account">
+<!--                    <button id="add-product-btn">Add</button>-->
+                    <button id="load-previous-account">See Previous</button>
+
+                    <button id="load-more-account">Load More</button>
+<!--                    <button id="delete-product">Delete</button>-->
+                    <butotn id="hide-account">Hide</butotn>
+                </div>
+            </div>
             <div id="container-category"></div>
             <div id="container-comment"></div>
             <div id="container-customer"></div>
@@ -107,7 +132,11 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="../js/manager.js"></script>
+    <script src="../js/managerproduct.js"></script>
+    <script src="../js/manageraccount.js"></script>
+    <script src="../js/managercomment.js"></script>
+    <script src="../js/managercustomer.js"></script>
+    <script src="../js/managercategory.js.js"></script>
     <script>
         $(document).ready(function () {
             $(window).scroll(function () {
