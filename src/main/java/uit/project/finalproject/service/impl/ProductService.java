@@ -58,4 +58,20 @@ public class ProductService implements iProductservice {
     public int totalItem() {
         return (int) productRepository.count();
     }
+
+    @Override
+    public ProductDTO findById(long id) {
+        ProductEntity productEntity = productRepository.findById(id).orElse(null);
+        if (productEntity != null) {
+            return productConverter.toDTO(productEntity);
+        }
+        return null;
+    }
+//    public String getCategoryCodeByCategoryId(Long categoryId){
+//        CategoryEntity category = categoryRepository.findById(categoryId)orElse(null);
+//        if (category != null) {
+//            return category.getCode();
+//        }
+//        return null;
+//    }
 }

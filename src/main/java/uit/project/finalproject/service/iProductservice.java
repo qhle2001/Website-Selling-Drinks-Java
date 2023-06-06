@@ -11,4 +11,5 @@ public interface iProductservice {
     void delete(long[] ids);
     List<ProductDTO> findAll(Pageable pageable);
     int totalItem();
+    ProductDTO findById(long id);
 }

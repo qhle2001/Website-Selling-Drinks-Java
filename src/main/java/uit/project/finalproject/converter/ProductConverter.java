@@ -13,7 +13,6 @@ public class ProductConverter {
         entity.setContent(dto.getContent());
         entity.setShortdescription(dto.getShortdescription());
         entity.setThumbnall(dto.getThumbnall());
-
         return entity;
     }
 
@@ -31,6 +30,8 @@ public class ProductConverter {
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
         dto.setCreatedBy(entity.getCreatedBy());
+//        dto.setCategoryCode(entity.getCategr().getCode());
+
         return dto;
     }
 
@@ -40,6 +41,7 @@ public class ProductConverter {
         entity.setContent(dto.getContent());
         entity.setShortdescription(dto.getShortdescription());
         entity.setThumbnall(dto.getThumbnall());
+
         return entity;
     }
 }

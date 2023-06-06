@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+<!--    <base href="http://localhost:8888/home/">-->
+    <title>Đăng ký tài khoản</title>
+    <link rel="stylesheet" href="../css/manager.css">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="inner-header container">
+                <a href="" class="logo"> LQH </a>
+
+                <div id="menu">
+                    <div class="item">
+                        <a id="Account" href="">Account</a>
+                    </div>
+                    <div class="item">
+                        <a id="Category" href="">Category</a>
+                    </div>
+                    <div class="item">
+                        <a id="Comment" href="">Coment</a>
+                    </div>
+                    <div class="item">
+                        <a id="Customer" href="">Customer</a>
+                    </div>
+                    <div class="item">
+                        <a id="Product" href="">Product</a>
+                    </div>
+                </div>
+                <div id="actions">
+                </div>
+                <div class="item">
+                    <a href="html/formlogin.html">
+                        <img id="user" src="/img/user.png" height="21" width="21"/>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div id="container">
+            <div id="container-account"></div>
+            <div id="container-category"></div>
+            <div id="container-comment"></div>
+            <div id="container-customer"></div>
+            <div id="container-product">
+                <h1>Product-list</h1>
+                <table id="product-table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Size</th>
+                        <th>Category Code</th>
+                        <th>Created Date</th>
+                        <th>Modified Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="product-list"></tbody>
+                </table>
+                <div id="container-button">
+                    <button id="add-product-btn">Add</button>
+                    <button id="load-previous">See Previous</button>
+
+                    <button id="load-more">Load More</button>
+                    <button id="delete-product">Delete</button>
+                    <butotn id="hide-product">Hide</butotn>
+                </div>
+                <div id="add-product-form" style="display: none;">
+                    <h2>Add Product</h2>
+                    <form>
+                        <label for="product-title">Name:</label>
+                        <input type="text" id="product-title" name="product-title"><br>
+
+                        <label for="product-size">Size:</label>
+                        <input type="text" id="product-size" name="product-size"><br>
+
+                        <label for="product-categoryCode">Category Code:</label>
+                        <input type="text" id="product-categoryCode" name="product-categoryCode"><br>
+
+
+                        <button type="button" id="add-product">Add Product</button>
+                        <button type="button" id="cancel-add-product">Cancel</button>
+                    </form>
+                </div>
+                <div id="edit-product-form" style="display: none;">
+                    <h2>Edit Product</h2>
+                    <form>
+                        <label for="product-title">Name:</label>
+                        <input type="text" id="edit-product-title" name="product-title"><br>
+
+                        <label for="product-size">Size:</label>
+                        <input type="text" id="edit-product-size" name="product-size"><br>
+
+                        <label for="product-categoryCode">Category Code:</label>
+                        <input type="text" id="edit-product-categoryCode" name="product-categoryCode"><br>
+
+
+                        <button id="update-product">Update</button>
+                        <button id="cancel-edit">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="../js/manager.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop()) {
+                    $('header').addClass('sticky');
+                } else {
+                    $('header').removeClass('sticky');
+                }
+            })
+        })
+    </script>
+</body>
+</html>

@@ -2,37 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <base th:href="@{http://localhost:8888/home/}">-->
+    <!--    <base th:href="@{http://localhost:8888/home/}">-->
     <title>Trang chủ</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
 </head>
 <body>
-    <div ip="wrapper">
+    <div id="wrapper">
         <header>
             <div class="inner-header container">
-            <a href="" class="logo">
-                LQH
-<!--                <img th:src="@{/img/logo.jpg}" width="150" height="90"/>-->
-            </a>
+                <a href="" class="logo">LQH</a>
 
-            <div id="menu">
-                <div class="item">
-                    <a id="Trang-chủ" href="">Trang chủ</a>
+                <div id="menu">
+                    <div class="item">
+                        <a id="Trang-chủ" href="">Trang chủ</a>
+                    </div>
+                    <div class="item">
+                        <a id="Sản-phẩm" href="">Sản phẩm</a>
+                    </div>
+                    <div class="item">
+                        <a id="blog" href="">Blog</a>
+                    </div>
+                    <div class="item">
+                        <a id="Liên-hệ" href="">Liên hệ</a>
+                    </div>
+                </div>
+                <div id="actions">
                 </div>
                 <div class="item">
-                    <a id="Sản-phẩm" href="">Sản phẩm</a>
-                </div>
-                <div class="item">
-                    <a id="blog" href="">Blog</a>
-                </div>
-                <div class="item">
-                    <a id="Liên-hệ" href="">Liên hệ</a>
-                </div>
-            </div>
-            <div id="actions">
-                </div>
-                <div class="item">
-                    <a th:href="@{/html/formlogin.html}" >
+                    <a th:href="@{/html/formlogin.html}">
                         <img id="user" th:src="@{/img/user.png}" height="21" width="21"/>
                     </a>
                 </div>
@@ -42,34 +39,34 @@
             </div>
         </header>
         <div id="banner">
-                <div class="box-left">
-                    <h2>
-                        <span>ĐỒ UỐNG</span>
-                        <br>
-                        <span>THƯỢNG HẠNG</span>
-                    </h2>
-                    <p>Chuyên cung cấp các loại đồ uống đảm bảo dinh dưỡng
-                        hợp vệ sinh đến người tiêu dùng, phục vụ người dùng một
-                        cách hoàn hảo nhất</p>
-                    <button>Mua ngay</button>
-                </div>
-                <div class="box-right">
-                    <img th:src="@{/img/img_1.png}" height="276" width="95"/>
-                    <img th:src="@{/img/img_2.png}" height="333" width="95"/>
-                    <img th:src="@{/img/img_3.png}" height="276" width="95"/>
-                </div>
-                <div class="to-bottom">
-                    <a href="">
-                        <img th:src="@{/img/to_bottom.png}" alt="">
-                    </a>
-                </div>
+            <div class="box-left">
+                <h2>
+                    <span>ĐỒ UỐNG</span>
+                    <br>
+                    <span>THƯỢNG HẠNG</span>
+                </h2>
+                <p>Chuyên cung cấp các loại đồ uống đảm bảo dinh dưỡng
+                    hợp vệ sinh đến người tiêu dùng, phục vụ người dùng một
+                    cách hoàn hảo nhất</p>
+                <button>Mua ngay</button>
             </div>
+            <div class="box-right">
+                <img th:src="@{/img/img_1.png}" height="276" width="95"/>
+                <img th:src="@{/img/img_2.png}" height="333" width="95"/>
+                <img th:src="@{/img/img_3.png}" height="276" width="95"/>
+            </div>
+            <div class="to-bottom">
+                <a href="">
+                    <img th:src="@{/img/to_bottom.png}" alt="">
+                </a>
+            </div>
+        </div>
         <div class="container">
             <div id="wp-products">
                 <h2>SẢN PHẨM CỦA CHÚNG TÔI</h2>
                 <ul id="list-products">
                     <div class="item">
-                    <img th:src="@{/img/product_1.png}" height="174" width="256"/>
+                        <img th:src="@{/img/product_1.png}" height="174" width="256"/>
                         <div class="stars">
                             <span>
                                 <img th:src="@{/img/star.png}" height="27" width="28"/>
@@ -343,55 +340,52 @@
                 </div>
             </div>
         </div>
-            <div id="footer">
-                <div class="box">
-<!--                    <div class="logo">-->
-<!--                        <img th:src="@{/img/logo.png}" height="40" width="100"/>-->
-<!--                    </div>-->
-                    <a href="" id="logo">LQH</a>
-                    <p>Cung cấp sản phẩm với chất lượng an toàn cho quý khách</p>
-                </div>
-                <div class="box">
-                    <h3>NỘI DUNG</h3>
-                    <ul class="quick-menu">
-                        <div class="item">
-                            <a href="">Trang chủ</a>
-                        </div>
-                        <div class="item">
-                            <a href="">Sản phẩm</a>
-                        </div>
-                        <div class="item">
-                            <a href="">Blog</a>
-                        </div>
-                        <div class="item">
-                            <a href="">Liên hệ</a>
-                        </div>
-                    </ul>
-                </div>
-                <div class="box">
-                    <h3>LIÊN HỆ</h3>
-                    <form action="">
-                        <div class="item">
-                            <a href="mailto: hunglequang1230@gmail.com">Email: hunglequang1230@gmail.com</a>
-                        </div>
-                        <div class="item">
-                            <a href="">Hotline: 0981655245</a>
-                        </div>
-                        <input type="text" placeholder="Địa chỉ email">
-                        <button>Nhận tin</button>
-                    </form>
-                </div>
+        <div id="footer">
+            <div class="box">
+                <a href="" id="logo">LQH</a>
+                <p>Cung cấp sản phẩm với chất lượng an toàn cho quý khách</p>
+            </div>
+            <div class="box">
+                <h3>NỘI DUNG</h3>
+                <ul class="quick-menu">
+                    <div class="item">
+                        <a href="">Trang chủ</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Sản phẩm</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Blog</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Liên hệ</a>
+                    </div>
+                </ul>
+            </div>
+            <div class="box">
+                <h3>LIÊN HỆ</h3>
+                <form action="">
+                    <div class="item">
+                        <a href="mailto: hunglequang1230@gmail.com">Email: hunglequang1230@gmail.com</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Hotline: 0981655245</a>
+                    </div>
+                    <input type="text" placeholder="Địa chỉ email">
+                    <button>Nhận tin</button>
+                </form>
+            </div>
         </div>
     </div>
 
     <script th:src="@{/js/index.js}"></script>
     <script th:src="@{https://code.jquery.com/jquery-3.7.0.js}"></script>
     <script>
-        $(document).ready(function(){
-            $(window).scroll(function (){
-                if($(this).scrollTop()) {
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop()) {
                     $('header').addClass('sticky');
-                }else{
+                } else {
                     $('header').removeClass('sticky');
                 }
             })

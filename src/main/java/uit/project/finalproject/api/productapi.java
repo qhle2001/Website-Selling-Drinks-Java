@@ -38,4 +38,8 @@ public class productapi {
     public void deleteProduct(@RequestBody long[] ids){
         productservice.delete(ids);
     }
+    @GetMapping(value="/product/{id}")
+    public ProductDTO getProductById(@PathVariable("id") long id) {
+        return productservice.findById(id);
+    }
 }
