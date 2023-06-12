@@ -3,7 +3,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 import java.util.List;

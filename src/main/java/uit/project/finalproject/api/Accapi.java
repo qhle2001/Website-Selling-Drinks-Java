@@ -37,4 +37,8 @@ public class Accapi {
     public void deleteAcc(@RequestBody long[] ids){
         accservice.delete(ids);
     }
+    @GetMapping(value="/acc/{username}")
+    public AccDTO getAccByUsername(@PathVariable("username") String username) {
+        return accservice.getAccByUsername(username);
+    }
 }

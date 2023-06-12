@@ -42,9 +42,9 @@ $(document).ready(function (){
                     $('#load-more-account').hide();
                 }
                 if (page > 1){
-                    $('#load-previous-account').hide;
+                    $('#load-previous-account').show();
                 }else{
-                    $('#load-previous-account').show;
+                    $('#load-previous-account').hide();
                 }
             },
             error: function() {

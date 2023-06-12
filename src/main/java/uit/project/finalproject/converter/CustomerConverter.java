@@ -34,6 +34,7 @@ public class CustomerConverter {
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
         dto.setCreatedBy(entity.getCreatedBy());
+        dto.setUsername(entity.getAccount().getUsername());
         return dto;
     }
 

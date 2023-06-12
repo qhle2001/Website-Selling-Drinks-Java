@@ -10,5 +10,6 @@ public interface iCategoryservice {
 
     void delete(long[] ids);
     List<CategoryDTO> findAll(Pageable pageable);
+    List<CategoryDTO> findAll();
     int totalItem();
 }

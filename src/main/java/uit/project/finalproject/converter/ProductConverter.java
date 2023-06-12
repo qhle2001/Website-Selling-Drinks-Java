@@ -1,11 +1,16 @@
 package uit.project.finalproject.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import uit.project.finalproject.dto.ProductDTO;
 import uit.project.finalproject.entity.ProductEntity;
+import uit.project.finalproject.entity.CategoryEntity;
+import uit.project.finalproject.filter.repository.CategoryRepository;
 
 @Component
 public class ProductConverter {
+    @Autowired
+    private CategoryRepository categoryRepository;
     public ProductEntity toEntity(ProductDTO dto){
         ProductEntity entity = new ProductEntity();
         entity.setTitle(dto.getTitle());
@@ -30,7 +35,8 @@ public class ProductConverter {
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
         dto.setCreatedBy(entity.getCreatedBy());
-//        dto.setCategoryCode(entity.getCategr().getCode());
+        dto.setCategoryCode(entity.getCategr().getCode());
+        dto.setCategoryid(entity.getCategr().getId());
 
         return dto;
     }

@@ -5,9 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import uit.project.finalproject.converter.AccConverter;
 import uit.project.finalproject.dto.AccDTO;
-import uit.project.finalproject.entity.TypeAccEntity;
 import uit.project.finalproject.entity.AccEntity;
-import uit.project.finalproject.filter.repository.TypeAccRepository;
 import uit.project.finalproject.filter.repository.AccRepository;
 import uit.project.finalproject.service.iAccservice;
 
@@ -17,8 +15,8 @@ import java.util.List;
 public class AccService implements iAccservice {
     @Autowired
     private AccRepository accRepository;
-    @Autowired
-    private TypeAccRepository typeAccRepository;
+//    @Autowired
+//    private TypeAccRepository typeAccRepository;
     @Autowired
     private AccConverter accConverter;
     @Override
@@ -31,8 +29,8 @@ public class AccService implements iAccservice {
         else{
             accEntity = accConverter.toEntity(accDTO);
         }
-        TypeAccEntity typeAccEntity = typeAccRepository.findOneByCode(accDTO.getTypeaccCode());
-        accEntity.setCustomer_account(typeAccEntity);
+//        TypeAccEntity typeAccEntity = typeAccRepository.findOneByCode(accDTO.getTypeaccCode());
+//        accEntity.setCustomer_account(typeAccEntity);
         accEntity = accRepository.save(accEntity);
         return accConverter.toDTO(accEntity);
     }
@@ -57,5 +55,10 @@ public class AccService implements iAccservice {
     @Override
     public int totalItem() {
         return (int) accRepository.count();
+    }
+    @Override
+    public AccDTO getAccByUsername(String username){
+        AccEntity accEntity = accRepository.findOneByUsername(username);
+        return accConverter.toDTO(accEntity);
     }
 }

@@ -12,4 +12,5 @@ public interface iProductservice {
     List<ProductDTO> findAll(Pageable pageable);
     int totalItem();
     ProductDTO findById(long id);
+//    List<Object[]> showProduct()
 }

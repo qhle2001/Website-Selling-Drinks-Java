@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import uit.project.finalproject.dto.ProductDTO;
 import uit.project.finalproject.service.iProductservice;
 import uit.project.finalproject.api.output.ProductOutput;
-
+import java.util.ArrayList;
+import java.util.List;
 @RestController
 @CrossOrigin
 public class productapi {
@@ -42,4 +43,5 @@ public class productapi {
     public ProductDTO getProductById(@PathVariable("id") long id) {
         return productservice.findById(id);
     }
+
 }

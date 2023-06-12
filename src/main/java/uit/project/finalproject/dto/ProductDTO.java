@@ -7,15 +7,24 @@ public class ProductDTO extends AbstracDTO<ProductDTO>{
     private String shortdescription;
     private String categoryCode;
     private String thumbnall;
-//    private Long categoryId;
+    private CategoryDTO category;
+    private Long categoryid;
 
-//    public Long getCategoryId() {
-//        return categoryId;
-//    }
-//
-//    public void setCategoryId(Long categoryId) {
-//        this.categoryId = categoryId;
-//    }
+    public Long getCategoryid() {
+        return categoryid;
+    }
+
+    public void setCategoryid(Long categoryid) {
+        this.categoryid = categoryid;
+    }
+
+    public CategoryDTO getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDTO category) {
+        this.category = category;
+    }
 
     public String getTitle() {
         return title;

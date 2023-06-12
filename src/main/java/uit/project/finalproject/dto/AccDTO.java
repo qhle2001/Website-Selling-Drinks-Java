@@ -3,7 +3,6 @@ package uit.project.finalproject.dto;
 public class AccDTO extends AbstracDTO<AccDTO>{
     private String username;
     private String password;
-    private String typeaccCode;
 
     public String getUsername() {
         return username;
@@ -19,13 +18,5 @@ public class AccDTO extends AbstracDTO<AccDTO>{
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getTypeaccCode() {
-        return typeaccCode;
-    }
-
-    public void setTypeaccCode(String typeaccCode) {
-        this.typeaccCode = typeaccCode;
     }
 }

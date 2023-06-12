@@ -15,6 +15,11 @@
     margin: 0px auto;
     max-width: 960px;
 }
+.h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #1d1a1a;
@@ -39,7 +44,7 @@ header.sticky{
 header.sticky .logo{
     color: #fff;
 }
-header.sticky #menu .item a{
+header.sticky #menu .item .item-content{
     color: #fff;
 }
 /*Begin header*/
@@ -72,10 +77,11 @@ header.sticky #menu .item a{
     justify-content: center;
     text-transform: uppercase;
     display: block;
-    /*margin-top: 50px;*/
 }
-
-#menu .item a {
+#menu .item:hover{
+    background-color: #dddddd;
+}
+#menu .item .item-content {
     color:black;
     padding: 10px 20px;
     display: block;
@@ -84,6 +90,7 @@ header.sticky #menu .item a{
     text-decoration: none;
     /*background-color: #362f2f;*/
 }
+
 /*End menu*/
 /*Begin actions*/
 #actions {
@@ -101,16 +108,30 @@ header.sticky #menu .item a{
     width: 100%;
     margin-top:65px;
 }
-#product-table {
+.table {
     width: 100%;
     border-collapse: collapse;
 }
 
-#product-table th, #product-table td {
+.table th, .table td {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#product-table th {
+.table th {
     background-color: #f2f2f2;
+}
+.container-button{
+    padding: 20px 0px;
+    transition: all 0.5s ease-in-out;
+    font-size: revert;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+}
+.container-button button{
+    margin-left: 20px;
+    font-size: 15px;
+    width: 150px;
+    height: 30px;
 }

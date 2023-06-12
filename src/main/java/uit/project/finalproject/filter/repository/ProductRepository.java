@@ -5,4 +5,5 @@ import uit.project.finalproject.entity.ProductEntity;
 import java.util.List;
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 //    List<ProductEntity> findByCategoryId(Long categoryId);
+
 }

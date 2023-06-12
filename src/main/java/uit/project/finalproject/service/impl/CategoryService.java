@@ -3,10 +3,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import uit.project.finalproject.converter.CategoryConverter;
+import uit.project.finalproject.converter.ProductConverter;
 import uit.project.finalproject.dto.CategoryDTO;
-//import uit.project.finalproject.entity.AccEntity;
+import uit.project.finalproject.dto.ProductDTO;
+import uit.project.finalproject.entity.ProductEntity;
 import uit.project.finalproject.entity.CategoryEntity;
-import uit.project.finalproject.filter.repository.AccRepository;
 import uit.project.finalproject.filter.repository.CategoryRepository;
 import uit.project.finalproject.service.iCategoryservice;
 
@@ -16,14 +17,10 @@ import java.util.List;
 public class CategoryService implements iCategoryservice{
     @Autowired
     private CategoryRepository categoryRepository;
-//    @Autowired
-//    private AccRepository accRepository;
     @Autowired
     private CategoryConverter categoryConverter;
-//    @Override
-//    public CategoryDTO save(CategoryDTO categoryDTO){
-//        return null;
-//    }
+    @Autowired
+    private ProductConverter productConverter;
     @Override
     public CategoryDTO save(CategoryDTO categoryDTO) {
         CategoryEntity categoryEntity = new CategoryEntity();
@@ -34,8 +31,6 @@ public class CategoryService implements iCategoryservice{
         else{
             categoryEntity = categoryConverter.toEntity(categoryDTO);
         }
-//        AccEntity accEntity = accRepository.findOneByUsername(categoryDTO.getUsername());
-//        categoryEntity.setAccount(accEntity);
         categoryEntity = categoryRepository.save(categoryEntity);
         return categoryConverter.toDTO(categoryEntity);
     }
@@ -61,4 +56,31 @@ public class CategoryService implements iCategoryservice{
     public int totalItem() {
         return (int) categoryRepository.count();
     }
+    @Override
+    public List<CategoryDTO> findAll() {
+        List<CategoryEntity> categoryEntities = categoryRepository.findAll();
+        List<CategoryDTO> categoryDTOs = new ArrayList<>();
+
+        for (CategoryEntity categoryEntity : categoryEntities) {
+            CategoryDTO categoryDTO = categoryConverter.toDTO(categoryEntity);
+
+            // Lấy danh sách ProductEntity từ CategoryEntity
+            List<ProductEntity> productEntities = categoryEntity.getProducts();
+
+            // Chuyển đổi danh sách ProductEntity sang danh sách ProductDTO
+            List<ProductDTO> productDTOs = new ArrayList<>();
+            for (ProductEntity productEntity : productEntities) {
+                ProductDTO productDTO = productConverter.toDTO(productEntity);
+                productDTOs.add(productDTO);
+            }
+
+            // Set danh sách ProductDTO vào CategoryDTO
+            categoryDTO.setProducts(productDTOs);
+
+            categoryDTOs.add(categoryDTO);
+        }
+
+        return categoryDTOs;
+    }
+
 }

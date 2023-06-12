@@ -14,13 +14,22 @@ public class AccEntity extends BaseEntity{
     private String password;
     @OneToOne(mappedBy = "account")
     private CustomerEntity customer;
-    @ManyToOne
-    @JoinColumn(name = "typeacc_id")
-    private TypeAccEntity customer_account;
     @OneToMany(
             mappedBy = "account"
     )
     private List<CommentEntity> account = new ArrayList<>();
+    @OneToMany(
+            mappedBy = "customer"
+    )
+    private List<OrderEntity> orders = new ArrayList<>();
+
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
+    }
 
     public List<CommentEntity> getAccount() {
         return account;
@@ -28,14 +37,6 @@ public class AccEntity extends BaseEntity{
 
     public void setAccount(List<CommentEntity> account) {
         this.account = account;
-    }
-
-    public TypeAccEntity getCustomer_account() {
-        return customer_account;
-    }
-
-    public void setCustomer_account(TypeAccEntity customer_account) {
-        this.customer_account = customer_account;
     }
 
     public CustomerEntity getCustomer() {
