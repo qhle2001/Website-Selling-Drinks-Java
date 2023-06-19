@@ -9,11 +9,10 @@ $(document).ready(function (){
 
         accounts.forEach(function(account) {
             var row = $('<tr>');
-
             row.append($('<td>').text(account.id));
             row.append($('<td>').text(account.username));
             row.append($('<td>').text(account.password));
-            row.append($('<td>').text(account.typeaccCode));
+            row.append($('<td>').text(account.picture));
             row.append($('<td>').text(account.createdDate));
             row.append($('<td>').text(account.modifiedDate));
 

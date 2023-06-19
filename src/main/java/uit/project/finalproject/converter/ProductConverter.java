@@ -14,10 +14,14 @@ public class ProductConverter {
     public ProductEntity toEntity(ProductDTO dto){
         ProductEntity entity = new ProductEntity();
         entity.setTitle(dto.getTitle());
-        entity.setSize(dto.getSize());
-        entity.setContent(dto.getContent());
-        entity.setShortdescription(dto.getShortdescription());
-        entity.setThumbnall(dto.getThumbnall());
+        entity.setPicture(dto.getPicture());
+
+        if (dto.getCategory_id() != null) {
+            CategoryEntity categoryEntity = new CategoryEntity();
+            categoryEntity.setId(dto.getCategory_id());
+            entity.setCategr(categoryEntity);
+        }
+
         return entity;
     }
 
@@ -27,26 +31,31 @@ public class ProductConverter {
             dto.setId(entity.getId());
         }
         dto.setTitle(entity.getTitle());
-        dto.setSize(entity.getSize());
-        dto.setContent(entity.getContent());
-        dto.setShortdescription(entity.getShortdescription());
-        dto.setThumbnall(entity.getThumbnall());
+        dto.setPicture(entity.getPicture());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
         dto.setCreatedBy(entity.getCreatedBy());
-        dto.setCategoryCode(entity.getCategr().getCode());
-        dto.setCategoryid(entity.getCategr().getId());
+
+        CategoryEntity categoryEntity = entity.getCategr();
+        if (categoryEntity != null) {
+            dto.setCategory_id(categoryEntity.getId());
+            // Thực hiện việc lấy categoryCode từ categoryEntity và gán cho dto
+            dto.setCategoryCode(categoryEntity.getCode());
+        }
 
         return dto;
     }
 
     public ProductEntity toEntity(ProductDTO dto, ProductEntity entity){
         entity.setTitle(dto.getTitle());
-        entity.setSize(dto.getSize());
-        entity.setContent(dto.getContent());
-        entity.setShortdescription(dto.getShortdescription());
-        entity.setThumbnall(dto.getThumbnall());
+        entity.setPicture(dto.getPicture());
+
+        if (dto.getCategory_id() != null) {
+            CategoryEntity categoryEntity = new CategoryEntity();
+            categoryEntity.setId(dto.getCategory_id());
+            entity.setCategr(categoryEntity);
+        }
 
         return entity;
     }

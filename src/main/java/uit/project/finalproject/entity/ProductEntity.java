@@ -9,13 +9,7 @@ public class ProductEntity extends BaseEntity{
     @Column(name = "name")
     private String title;
     @Column
-    private String size;
-    @Column
-    private String thumbnall;
-    @Column
-    private String shortdescription;
-    @Column
-    private String content;
+    private String picture;
     @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryEntity categr;
@@ -28,28 +22,12 @@ public class ProductEntity extends BaseEntity{
         this.title = title;
     }
 
-    public String getThumbnall() {
-        return thumbnall;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setThumbnall(String thumbnall) {
-        this.thumbnall = thumbnall;
-    }
-
-    public String getShortdescription() {
-        return shortdescription;
-    }
-
-    public void setShortdescription(String shortdescription) {
-        this.shortdescription = shortdescription;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public CategoryEntity getCategr() {
@@ -58,13 +36,5 @@ public class ProductEntity extends BaseEntity{
 
     public void setCategr(CategoryEntity categr) {
         this.categr = categr;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 }

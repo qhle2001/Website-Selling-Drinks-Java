@@ -33,7 +33,7 @@ $(document).ready(function() {
             });
             row.append($('<td>').html(checkbox));
             row.append($('<td>').text(orders.id));
-            row.append($('<td>').text(orders.customer_username));
+            row.append($('<td>').text(orders.account_id));
             row.append($('<td>').text(orders.customername));
             row.append($('<td>').text(orders.phonenumber));
             row.append($('<td>').text(orders.productname));
@@ -42,6 +42,7 @@ $(document).ready(function() {
             row.append($('<td>').text(orders.homeaddress));
             row.append($('<td>').text(orders.createdDate));
             row.append($('<td>').text(orders.modifiedDate));
+            // alert(orders.username);
 
             orderList.append(row);
 
@@ -85,7 +86,7 @@ $(document).ready(function() {
     // Xử lý sự kiện khi nhấn vào nút "Load More"
     $('#load-more-order').click(function() {
         page++;
-        getorderList();
+        getOrderList();
     });
 
     // Xử lý sự kiện khi nhấn vào nút "See Previous"

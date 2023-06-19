@@ -10,6 +10,15 @@ public class CustomerDTO extends AbstracDTO<CustomerDTO>{
     private String homeaddress;
     private String picture;
     private String username;
+    private Long account_id;
+
+    public Long getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(Long account_id) {
+        this.account_id = account_id;
+    }
 
     public String getFirstname() {
         return firstname;

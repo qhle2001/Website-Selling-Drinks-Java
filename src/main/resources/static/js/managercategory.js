@@ -60,6 +60,7 @@ $(document).ready(function() {
                 limit: limit
             },
             success: function(response) {
+                alert("ready");
                 showCategoryList(response.listResults);
 
                 // Kiểm tra nếu còn sản phẩm để hiển thị

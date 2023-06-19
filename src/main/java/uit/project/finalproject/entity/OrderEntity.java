@@ -18,7 +18,7 @@ public class OrderEntity extends BaseEntity{
     @Column
     private String phonenumber;
     @ManyToOne
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "account_id")
     private AccEntity customer;
 
     public String getProductname() {

@@ -3,8 +3,6 @@ $(document).ready(function() {
     var limit = 10;
     var checkbox;
     var selectedProductIds = [];
-    var relativePath = "src/main/resources/static/";
-    var absolutePath = window.location.protocol + "//" + window.location.host + "/" + relativePath;
 
     // Hàm để hiển thị danh sách sản phẩm
     function showProductList(products) {
@@ -38,9 +36,7 @@ $(document).ready(function() {
             row.append($('<td>').text(product.id));
             row.append($('<td>').text(product.title));
             row.append($('<td>').text(product.category_id));
-            row.append($('<td>').append($('<img>').attr('src', product.picture).addClass('product-image').attr('height', '100').attr('width', '100')));
-
-            // row.append($('<td>').text(product.picture));
+            row.append($('<td>').text(product.picture));
             row.append($('<td>').text(product.createdDate));
             row.append($('<td>').text(product.modifiedDate));
             row.append(
@@ -107,45 +103,21 @@ $(document).ready(function() {
     $('#hide-product').click(function(){
         $('#container-product').hide();
     });
-    // Xử lý sự kiện khi nhấn vào "menu-product"
     $('#Product').click(function(){ $('#container-product').show();});
     // Xử lý sự kiện hiển thị form khi nhấn vào nút "Add Product"
     $('#add-product-btn').click(function(){
         $('#add-product-form').show();
     });
+
     // var file = event.target.files[0];
     // Xử lý sự kiện khi nhấn vào nút "Add"
     $('#add-product').click(function() {
-        var file = $('#image-input')[0].files[0];
-
-        //kiểm tra xem có file ảnh được chọn hay không
-        if (file) {
-            var formData = new FormData();
-            formData.append('image', file);
-            $.ajax({
-                url: '/upload',
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(data) {
-                    adimagetodatabase();
-                },
-                error: function() {
-                    alert('Upload Image Error');
-                }
-            });
-        } else {
-            adimagetodatabase();
-        }
-    });
-    function adimagetodatabase(){
         var product = {
             title: $('#product-title').val(),
             categoryCode: $('#product-categoryCode').val(),
-            picture: $('#product-picture').val(),
-
+            picture: $('')
         };
+
         $.ajax({
             url: '/product',
             method: 'POST',
@@ -156,21 +128,18 @@ $(document).ready(function() {
                 // Reset các trường input
                 $('#product-title').val('');
                 $('#product-categoryCode').val('');
-                $('#product-picture').val('');
                 alert('Product added successfully');
             },
             error: function() {
                 alert('Error occurred while adding the product');
             }
         });
-    };
-
-    $('#product-picture').prop('disabled', true);
+    });
 
     $('#image-input').change(function(event) {
         var file = event.target.files[0];
         var imagePreview = $('#image-preview');
-        // var productPicture = $('#product-picture');
+        var imageName = $('#image-name');
 
         // Hiển thị ảnh xem trước
         var reader = new FileReader();
@@ -180,18 +149,11 @@ $(document).ready(function() {
         reader.readAsDataURL(file);
 
         // Hiển thị tên ảnh
-        $('#product-picture').val("../img/" + file.name);
+        imageName.text('Tên ảnh: ' + file.name);
     });
-
     // Xử lý sự kiện khi nhấn vào nút Cancel
     $('#cancel-add-product').click(function(){
-        $('#image-input').val('');
-        $('#image-preview').attr('src', '');
-        $('#image-name').text('');
-        $('#product-picture').val('');
-        $('#product-title').val('');
-        $('#product-categoryCode').val(''),
-       $('#add-product-form').hide();
+        $('#add-product-form').hide();
     });
     var productId;
     // Xử lý sự kiện khi nhấn vào nút "Edit"
@@ -205,9 +167,6 @@ $(document).ready(function() {
             method: 'GET',
             success: function(response) {
                 // Điền thông tin sản phẩm vào form Add Product
-                alert(absolutePath);
-                $('#edit-image-preview').attr('src', response.picture);
-                // $('<img>').attr('src', response.picture);
                 $('#edit-product-id').val(productId);
                 $('#edit-product-title').val(response.title);
                 $('#edit-product-categoryCode').val(response.categoryCode);
@@ -255,8 +214,8 @@ $(document).ready(function() {
         $('#edit-product-form').hide();
     });
     $(document).on('click', '.delete-product', function(){
-       productId = $(this).data('id');
-       // alert(productId);
+        productId = $(this).data('id');
+        // alert(productId);
         $.ajax({
             url: '/product',
             method: 'DELETE',
@@ -271,7 +230,6 @@ $(document).ready(function() {
             }
         });
     });
-
     $('#delete-product').click(function() {
         if (selectedProductIds.length === 0){
             alert('You have not selected the product to delete!');

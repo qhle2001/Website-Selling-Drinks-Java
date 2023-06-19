@@ -10,6 +10,7 @@ public class AccConverter {
         AccEntity entity = new AccEntity();
         entity.setUsername(dto.getUsername());
         entity.setPassword(dto.getPassword());
+        entity.setPicture(dto.getPicture());
 
         return entity;
     }
@@ -21,6 +22,7 @@ public class AccConverter {
         }
         dto.setUsername(entity.getUsername());
         dto.setPassword(entity.getPassword());
+        dto.setPicture(entity.getPicture());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
@@ -31,6 +33,7 @@ public class AccConverter {
     public AccEntity toEntity(AccDTO dto, AccEntity entity){
         entity.setUsername(dto.getUsername());
         entity.setPassword(dto.getPassword());
+        entity.setPicture(dto.getPicture());
         return entity;
     }
 }

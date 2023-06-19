@@ -67,12 +67,5 @@ public class ProductService implements iProductservice {
         }
         return null;
     }
-//    public String getCategoryCodeByCategoryId(Long categoryId){
-//        CategoryEntity category = categoryRepository.findById(categoryId)orElse(null);
-//        if (category != null) {
-//            return category.getCode();
-//        }
-//        return null;
-//    }
 
 }

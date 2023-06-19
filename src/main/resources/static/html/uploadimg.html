@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload ảnh</title>
+    <style>
+        .image-container {
+            margin-bottom: 20px;
+        }
+        .image-preview {
+            max-width: 300px;
+            max-height: 300px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+</head>
+<body>
+<h2>Upload ảnh</h2>
+<form id="upload-form">
+    <div class="image-container">
+        <img id="image-preview" class="image-preview" src="#" alt="Ảnh xem trước">
+    </div>
+    <div>
+        <input type="file" id="image-input" accept="image/*">
+    </div>
+    <div>
+        <button type="submit">Upload</button>
+    </div>
+    <div>
+        <p id="image-name"></p>
+    </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/uploadimg.js"></script>
+</body>
+</html>

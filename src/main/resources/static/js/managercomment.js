@@ -34,7 +34,7 @@ $(document).ready(function() {
             });
             row.append($('<td>').html(checkbox));
             row.append($('<td>').text(comment.id));
-            row.append($('<td>').text(comment.account_id));
+            row.append($('<td>').text(comment.acc_id));
             row.append($('<td>').text(comment.content));
             row.append($('<td>').text(comment.judge));
             row.append($('<td>').text(comment.createdDate));

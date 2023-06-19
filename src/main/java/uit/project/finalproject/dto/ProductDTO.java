@@ -2,20 +2,17 @@ package uit.project.finalproject.dto;
 
 public class ProductDTO extends AbstracDTO<ProductDTO>{
     private String title;
-    private String size;
-    private String content;
-    private String shortdescription;
     private String categoryCode;
-    private String thumbnall;
+    private String picture;
     private CategoryDTO category;
-    private Long categoryid;
+    private Long category_id;
 
-    public Long getCategoryid() {
-        return categoryid;
+    public Long getCategory_id() {
+        return category_id;
     }
 
-    public void setCategoryid(Long categoryid) {
-        this.categoryid = categoryid;
+    public void setCategory_id(Long category_id) {
+        this.category_id = category_id;
     }
 
     public CategoryDTO getCategory() {
@@ -34,22 +31,6 @@ public class ProductDTO extends AbstracDTO<ProductDTO>{
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getShortdescription() {
-        return shortdescription;
-    }
-
-    public void setShortdescription(String shortdescription) {
-        this.shortdescription = shortdescription;
-    }
-
 
     public String getCategoryCode() {
         return categoryCode;
@@ -59,19 +40,11 @@ public class ProductDTO extends AbstracDTO<ProductDTO>{
         this.categoryCode = categoryCode;
     }
 
-    public String getThumbnall() {
-        return thumbnall;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setThumbnall(String thumbnall) {
-        this.thumbnall = thumbnall;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

@@ -18,10 +18,8 @@ public class CustomerEntity extends BaseEntity{
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date participantdate;
     @Column
-    private String picture;
-    @Column
     private String homeaddress;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "account_id")
     private AccEntity account;
 
@@ -70,13 +68,5 @@ public class CustomerEntity extends BaseEntity{
 
     public void setHomeaddress(String homeaddress) {
         this.homeaddress = homeaddress;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
 }

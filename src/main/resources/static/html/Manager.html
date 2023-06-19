@@ -5,6 +5,7 @@
 <!--    <base href="http://localhost:8888/home/">-->
     <title>Đăng ký tài khoản</title>
     <link rel="stylesheet" href="../css/manager.css">
+
 </head>
 <body>
     <div id="wrapper">
@@ -50,7 +51,7 @@
                         <th>ID</th>
                         <th>UserName</th>
                         <th>Password</th>
-                        <th>Type Account</th>
+                        <th>Picture</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
                     </tr>
@@ -158,7 +159,6 @@
                         <th>Home Address</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
-                        <th>Picture</th>
                     </tr>
                     </thead>
                     <tbody id="customer-list"></tbody>
@@ -203,8 +203,8 @@
                         <th></th>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Size</th>
-                        <th>Category Code</th>
+                        <th>Category Id</th>
+                        <th>Picture</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
                         <th>Actions</th>
@@ -223,38 +223,56 @@
                 <div id="add-product-form" style="display: none;">
                     <h2>Add Product</h2>
                     <form>
-                        <label for="product-title">Name:</label>
-                        <input type="text" id="product-title" name="product-title"><br>
+                        <div class="image-container">
+                            <img id="image-preview" class="image-preview" src="#" height="100" width="100" alt="Previous Image">
+                        </div>
+                        <div >
+                            <label for="product-title">Name:</label>
+                            <input type="text" id="product-title" name="product-title"><br>
 
-                        <label for="product-size">Size:</label>
-                        <input type="text" id="product-size" name="product-size"><br>
+                            <label for="product-categoryCode">Category Code:</label>
+                            <input type="text" id="product-categoryCode" name="product-categoryCode"><br>
 
-                        <label for="product-categoryCode">Category Code:</label>
-                        <input type="text" id="product-categoryCode" name="product-categoryCode"><br>
+                            <label for="product-picture">Picture: </label>
+                            <input type="text" id="product-picture" name="product-picture"><br>
 
-
-                        <button type="button" id="add-product">Add Product</button>
-                        <button type="button" id="cancel-add-product">Cancel</button>
+                        </div>
+                        <div>
+                            <input type="file" id="image-input" accept="image/*">
+                        </div>
+                        <div>
+                            <p id="image-name"></p>
+                        </div>
+                        <div>
+                            <button type="button" id="add-product">Add Product</button>
+                            <button type="button" id="cancel-add-product">Cancel</button>
+                        </div>
                     </form>
                 </div>
                 <div id="edit-product-form" style="display: none;">
                     <h2>Edit Product</h2>
                     <form>
+                        <div class="image-container">
+                            <img id="edit-image-preview" class="image-preview" src="#" height="100" width="100">
+
+                        </div>
+                        <div>
                         <label for="product">Id:</label>
-                        <input type="text" id="edit-product-id" name="product-id"><br>
+                            <input type="text" id="edit-product-id" name="product-id"><br>
 
-                        <label for="product-title">Name:</label>
-                        <input type="text" id="edit-product-title" name="product-title"><br>
+                            <label for="product-title">Name:</label>
+                            <input type="text" id="edit-product-title" name="product-title"><br>
 
-                        <label for="product-size">Size:</label>
-                        <input type="text" id="edit-product-size" name="product-size"><br>
+                            <label for="product-categoryCode">Category Code:</label>
+                            <input type="text" id="edit-product-categoryCode" name="product-categoryCode"><br>
 
-                        <label for="product-categoryCode">Category Code:</label>
-                        <input type="text" id="edit-product-categoryCode" name="product-categoryCode"><br>
-
-
-                        <button id="update-product">Update</button>
-                        <button id="cancel-edit">Cancel</button>
+                            <label for="product-picture">Picture: </label>
+                            <input type="text" id="edit-product-picture" name="product-picture"><br>
+                        </div>
+                        <div>
+                            <button id="update-product">Update</button>
+                            <button id="cancel-edit">Cancel</button>
+                        </div>
                     </form>
                 </div>
             </div>

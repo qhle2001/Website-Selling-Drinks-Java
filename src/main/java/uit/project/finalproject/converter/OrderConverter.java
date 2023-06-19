@@ -2,6 +2,7 @@ package uit.project.finalproject.converter;
 
 import org.springframework.stereotype.Component;
 import uit.project.finalproject.dto.OrderDTO;
+import uit.project.finalproject.entity.AccEntity;
 import uit.project.finalproject.entity.OrderEntity;
 @Component
 public class OrderConverter {
@@ -13,6 +14,13 @@ public class OrderConverter {
         entity.setHomeaddress(dto.getHomeaddress());
         entity.setCustomername(dto.getCustomername());
         entity.setPhonenumber(dto.getPhonenumber());
+
+        if(dto.getUsername_buy() != null){
+            AccEntity accEntity = new AccEntity();
+            accEntity.setId(dto.getAccount_id());
+            entity.setCustomer(accEntity);
+        }
+
 
         return entity;
     }
@@ -32,6 +40,13 @@ public class OrderConverter {
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
         dto.setCreatedBy(entity.getCreatedBy());
+
+        AccEntity accEntity = entity.getCustomer();
+        if (accEntity != null) {
+            dto.setAccount_id(accEntity.getId());
+            dto.setUsername_buy(accEntity.getUsername());
+        }
+
         return dto;
     }
 
@@ -42,6 +57,13 @@ public class OrderConverter {
         entity.setHomeaddress(dto.getHomeaddress());
         entity.setCustomername(dto.getCustomername());
         entity.setPhonenumber(dto.getPhonenumber());
+
+        if(dto.getUsername_buy() != null){
+            AccEntity accEntity = new AccEntity();
+            accEntity.setId(dto.getAccount_id());
+            entity.setCustomer(accEntity);
+        }
+
         return entity;
     }
 }

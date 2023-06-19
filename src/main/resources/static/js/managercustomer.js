@@ -12,14 +12,13 @@ $(document).ready(function() {
         customer.forEach(function(customer) {
             var row = $('<tr>');
             row.append($('<td>').text(customer.id));
-            row.append($('<td>').text(customer.username));
+            row.append($('<td>').text(customer.account_id));
             row.append($('<td>').text(customer.firstname));
             row.append($('<td>').text(customer.lastname));
             row.append($('<td>').text(customer.dayofbirth));
             row.append($('<td>').text(customer.homeaddress));
             row.append($('<td>').text(customer.createdDate));
             row.append($('<td>').text(customer.modifiedDate));
-            row.append($('<td>').text(customer.picture));
 
             customerList.append(row);
 

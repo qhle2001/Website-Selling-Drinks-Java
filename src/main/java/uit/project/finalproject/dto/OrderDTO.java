@@ -7,7 +7,10 @@ public class OrderDTO extends AbstracDTO{
     private String homeaddress;
     private String customername;
     private String phonenumber;
-    private String username;
+    private String username_buy;
+    private Long account_id;
+
+
 
     public String getProductname() {
         return productname;
@@ -57,11 +60,19 @@ public class OrderDTO extends AbstracDTO{
         this.phonenumber = phonenumber;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUsername_buy() {
+        return username_buy;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername_buy(String username_buy) {
+        this.username_buy = username_buy;
+    }
+
+    public Long getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(Long account_id) {
+        this.account_id = account_id;
     }
 }

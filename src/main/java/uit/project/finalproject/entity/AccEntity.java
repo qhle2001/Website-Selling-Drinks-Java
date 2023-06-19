@@ -12,8 +12,12 @@ public class AccEntity extends BaseEntity{
     private String username;
     @Column
     private String password;
-    @OneToOne(mappedBy = "account")
-    private CustomerEntity customer;
+    @Column
+    private String picture;
+    @OneToMany(
+            mappedBy = "account"
+    )
+    private List<CustomerEntity> customer = new ArrayList<>();
     @OneToMany(
             mappedBy = "account"
     )
@@ -22,6 +26,14 @@ public class AccEntity extends BaseEntity{
             mappedBy = "customer"
     )
     private List<OrderEntity> orders = new ArrayList<>();
+
+    public List<CustomerEntity> getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(List<CustomerEntity> customer) {
+        this.customer = customer;
+    }
 
     public List<OrderEntity> getOrders() {
         return orders;
@@ -39,14 +51,6 @@ public class AccEntity extends BaseEntity{
         this.account = account;
     }
 
-    public CustomerEntity getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(CustomerEntity customer) {
-        this.customer = customer;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -62,5 +66,14 @@ public class AccEntity extends BaseEntity{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
 
 }

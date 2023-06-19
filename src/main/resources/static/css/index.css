@@ -210,6 +210,12 @@ header.sticky #menu .item a{
     margin-bottom: 50px;
 }
 
+#list-products .categoryname {
+    color: #626a67;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 #list-products .item img {
     display: block;
     margin:0px auto;
@@ -265,7 +271,7 @@ header.sticky #menu .item a{
     justify-content: center;
     align-items: center;
 }
-.list-page .item a {
+.list-page .item .ploadpage {
     color:#fff;
     text-decoration: none;
 }

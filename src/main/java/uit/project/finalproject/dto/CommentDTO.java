@@ -4,6 +4,15 @@ public class CommentDTO extends AbstracDTO<CommentDTO>{
     private String content;
     private String judge;
     private String username;
+    private Long acc_id;
+
+    public Long getAcc_id() {
+        return acc_id;
+    }
+
+    public void setAcc_id(Long acc_id) {
+        this.acc_id = acc_id;
+    }
 
     public String getContent() {
         return content;

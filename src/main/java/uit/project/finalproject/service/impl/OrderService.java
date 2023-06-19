@@ -32,9 +32,8 @@ public class OrderService implements iOrderservice{
         else{
             orderEntity = orderConverter.toEntity(orderDTO);
         }
-        AccEntity accEntity = accRepository.findOneByUsername(orderDTO.getUsername());
+        AccEntity accEntity = accRepository.findOneByUsername(orderDTO.getUsername_buy());
         orderEntity.setCustomer(accEntity);
-//        orderEntity.setAccount(accEntity);
         orderEntity = orderRepository.save(orderEntity);
         return orderConverter.toDTO(orderEntity);
     }
