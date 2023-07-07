@@ -58,4 +58,15 @@ public class CommentService implements iCommentservice {
     public int totalItem() {
         return (int) commentRepository.count();
     }
+
+    @Override
+    public List<CommentDTO> findAll() {
+        List<CommentDTO> results = new ArrayList<>();
+        List<CommentEntity> entities = commentRepository.findAll();
+        for(CommentEntity item: entities){
+            CommentDTO commentDTO = commentConverter.toDTO(item);
+            results.add(commentDTO);
+        }
+        return results;
+    }
 }

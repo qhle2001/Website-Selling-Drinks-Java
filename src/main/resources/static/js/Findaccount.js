@@ -1,5 +1,6 @@
-// document.getElementById("form-cancel").addEventListener("click", goBack);
-//
-// function goBack() {
-//     history.go(-1);
-// }
+$(document).ready(function() {
+    $('#form-cancel').click(function(event) {
+        event.preventDefault();
+        window.location.href = '../html/formlogin.html';
+    });
+});

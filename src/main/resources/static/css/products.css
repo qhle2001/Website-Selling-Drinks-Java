@@ -222,6 +222,7 @@ header.sticky #menu .item .a{
     color: black;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .list-products {
@@ -238,6 +239,9 @@ header.sticky #menu .item .a{
     background:#362f2f;
     border-radius: 10px;
     margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
 }
 
 .list-products .categoryname {
@@ -277,6 +281,42 @@ header.sticky #menu .item .a{
     font-weight: bold;
     margin-top:20px;
 }
+
+.list-products .item .add{
+    /*text-transform: uppercase;*/
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 10px 0px;
+    position: absolute;
+    width: 100%;
+    bottom: -60px;
+    transition: 0.25s ease-in-out;
+}
+
+.list-products .item:hover .add{
+    bottom: -9px;
+}
+
+.list-products .item .add .cart{
+    background-color: #446084;
+    margin-bottom: 1px;
+}
+
+.list-products .item .add .cart:hover{
+    color: lightgoldenrodyellow;
+}
+
+.list-products .item .add .buy_now{
+    background-color: #446084;
+}
+
+.list-products .item .add .buy_now:hover{
+    color: lightgoldenrodyellow;
+}
+
 
 
 .list-page {

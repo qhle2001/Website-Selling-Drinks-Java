@@ -14,13 +14,17 @@ public class Accapi {
     @Autowired
     private iAccservice accservice;
     @GetMapping(value="/acc")
-    public AccOutput showAcc(@RequestParam("page") int page,
-                                     @RequestParam("limit") int limit){
+    public AccOutput showAcc(@RequestParam(value = "page", required = false) Integer page,
+                             @RequestParam(value = "limit", required = false) Integer limit){
         AccOutput result = new AccOutput();
-        result.setPage(page);
-        Pageable pageable = PageRequest.of(page - 1, limit);
-        result.setListResults(accservice.findAll(pageable));
-        result.setTotalpage((int)Math.ceil((double) (accservice.totalItem()) / limit));
+        if (page != null && limit != null){
+            result.setPage(page);
+            Pageable pageable = PageRequest.of(page - 1, limit);
+            result.setListResults(accservice.findAll(pageable));
+            result.setTotalpage((int)Math.ceil((double) (accservice.totalItem()) / limit));
+        } else {
+            result .setListResults(accservice.findAll());
+        }
         return result;
     }
     @PostMapping(value="/acc")

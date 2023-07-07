@@ -14,13 +14,17 @@ public class Commentapi {
     @Autowired
     private iCommentservice commentservice;
     @GetMapping(value="/comment")
-    public CommentOutput showComment(@RequestParam("page") int page,
-                                     @RequestParam("limit") int limit){
+    public CommentOutput showComment(@RequestParam(value = "page", required = false) Integer page,
+                                     @RequestParam(value = "limit", required = false) Integer limit){
         CommentOutput result = new CommentOutput();
-        result.setPage(page);
-        Pageable pageable = PageRequest.of(page - 1, limit);
-        result.setListResults(commentservice.findAll(pageable));
-        result.setTotalpage((int)Math.ceil((double) (commentservice.totalItem()) / limit));
+        if (page != null && limit !=null){
+            result.setPage(page);
+            Pageable pageable = PageRequest.of(page - 1, limit);
+            result.setListResults(commentservice.findAll(pageable));
+            result.setTotalpage((int)Math.ceil((double) (commentservice.totalItem()) / limit));
+        } else {
+            result .setListResults(commentservice.findAll());
+        }
         return result;
     }
     @PostMapping(value="/comment")

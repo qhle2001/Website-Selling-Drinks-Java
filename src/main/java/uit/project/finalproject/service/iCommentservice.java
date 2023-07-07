@@ -10,5 +10,6 @@ public interface iCommentservice {
 
     void delete(long[] ids);
     List<CommentDTO> findAll(Pageable pageable);
+    List<CommentDTO> findAll();
     int totalItem();
 }

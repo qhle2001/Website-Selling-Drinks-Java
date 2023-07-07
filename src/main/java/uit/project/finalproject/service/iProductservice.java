@@ -11,5 +11,9 @@ public interface iProductservice {
     void delete(long[] ids);
     List<ProductDTO> findAll(Pageable pageable);
     int totalItem();
+    List<ProductDTO> findAll();
     ProductDTO findById(long id);
+    int countByCategrId(long categoryId);
+    List<ProductDTO> findByCategrId(long categoryId, Pageable pageable);
+//    List<ProductDTO> findByCategoryId(long categoryId);
 }

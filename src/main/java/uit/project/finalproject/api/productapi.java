@@ -5,6 +5,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import uit.project.finalproject.dto.ProductDTO;
+import uit.project.finalproject.entity.ProductEntity;
 import uit.project.finalproject.service.iProductservice;
 import uit.project.finalproject.api.output.ProductOutput;
 
@@ -21,17 +22,42 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class productapi {
-//    @RequestMapping(value="/new", method = RequestMethod.POST)
     @Autowired
     private iProductservice productservice;
-    @GetMapping(value="/product")
-    public ProductOutput showProduct(@RequestParam("page") int page,
-                                     @RequestParam("limit") int limit){
+//    @GetMapping(value="/product")
+//    public ProductOutput showProduct(@RequestParam("page") int page,
+//                                     @RequestParam("limit") int limit){
+//        ProductOutput result = new ProductOutput();
+//        result.setPage(page);
+//        Pageable pageable = PageRequest.of(page - 1, limit);
+//        result.setListResults(productservice.findAll(pageable));
+//        result.setTotalpage((int)Math.ceil((double) (productservice.totalItem()) / limit));
+//        return result;
+//    }
+    @GetMapping(value = "/product")
+    public ProductOutput showProduct(
+            @RequestParam(value = "page", required = false) Integer page,
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "category_id", required = false) Long categoryId) {
+
         ProductOutput result = new ProductOutput();
-        result.setPage(page);
-        Pageable pageable = PageRequest.of(page - 1, limit);
-        result.setListResults(productservice.findAll(pageable));
-        result.setTotalpage((int)Math.ceil((double) (productservice.totalItem()) / limit));
+
+        if (page != null && limit != null) {
+            result.setPage(page);
+            Pageable pageable = PageRequest.of(page - 1, limit);
+
+            if (categoryId != null) {
+                List<ProductDTO> productsByCategory = productservice.findByCategrId(categoryId, pageable);
+                result.setListResults(productsByCategory);
+                result.setTotalpage((int) Math.ceil((double) productservice.countByCategrId(categoryId) / limit));
+            } else {
+                List<ProductDTO> allProducts = productservice.findAll(pageable);
+                result.setListResults(allProducts);
+                result.setTotalpage((int) Math.ceil((double) productservice.totalItem() / limit));
+            }
+        } else{
+            result .setListResults(productservice.findAll());
+        }
         return result;
     }
 
@@ -54,7 +80,6 @@ public class productapi {
             String filename = file.getOriginalFilename();
 
             // Construct the target file path
-//            "C:/Users/DELL/OneDrive/Documents/java/finalproject/src/main/resources/static/img/"
             Path targetPath = Path.of(absolutePath, filename);
 
             // Save the file to the target path

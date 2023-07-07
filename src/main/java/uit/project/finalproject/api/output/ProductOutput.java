@@ -8,6 +8,7 @@ import java.util.List;
 public class ProductOutput {
     private int page;
     private int totalpage;
+
     private List<ProductDTO> listResults = new ArrayList<>();
 
     public int getPage() {

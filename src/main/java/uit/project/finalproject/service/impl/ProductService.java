@@ -9,6 +9,8 @@ import uit.project.finalproject.entity.ProductEntity;
 import uit.project.finalproject.filter.repository.CategoryRepository;
 import uit.project.finalproject.filter.repository.ProductRepository;
 import uit.project.finalproject.service.iProductservice;
+import org.springframework.data.domain.Page;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,5 +69,40 @@ public class ProductService implements iProductservice {
         }
         return null;
     }
+    @Override
+    public List<ProductDTO> findByCategrId(long categoryId, Pageable pageable) {
+        List<ProductDTO> results = new ArrayList<>();
+        Page<ProductEntity> entities = productRepository.findByCategrId(categoryId, pageable);
+        for (ProductEntity item : entities.getContent()) {
+            ProductDTO productDTO = productConverter.toDTO(item);
+            results.add(productDTO);
+        }
+        return results;
+    }
+//    @Override
+//    public List<ProductDTO> findByCategoryId(long categoryId) {
+//        List<ProductDTO> results = new ArrayList<>();
+//        Page<ProductEntity> entities = productRepository.findByCategrId(categoryId);
+//        for (ProductEntity item : entities.getContent()) {
+//            ProductDTO productDTO = productConverter.toDTO(item);
+//            results.add(productDTO);
+//        }
+//        return results;
+//    }
+    @Override
+    public int countByCategrId(long categoryId) {
+        return productRepository.countByCategrId(categoryId);
+    }
+    @Override
+    public List<ProductDTO> findAll() {
+        List<ProductDTO> results = new ArrayList<>();
+        List<ProductEntity> entities = productRepository.findAll();
 
+        for(ProductEntity item: entities){
+            ProductDTO productDTO = productConverter.toDTO(item);
+            results.add(productDTO);
+        }
+
+        return results;
+    }
 }
