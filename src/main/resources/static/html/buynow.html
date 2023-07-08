@@ -2,11 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mua hàng</title>
+    <link rel="stylesheet" href="../css/buynow.css">
 </head>
 <body>
     <div id="wrapper">
+        <div id="banner">
+            <div class="menu">
+<!--                    <img id="menu-icon" th:src="@{/img/user.png}" height="21" width="21"/>-->
+                <img src="../img/9034957_menu_icon.png" height="21" width="21"/>
+            </div>
+            <div class="logo">LQH</div>
+<!--        <a href="" class="logo">LQH</a>-->
+        </div>
+        <div id="left">
+            <div class="information-banner">
+                <div class="item" id="home">
+                    <img src="../img/3643769_building_home_house_main_menu_icon.png" height="21" width="21" />
+                    <p>trang chủ</p>
+                </div>
+                <div class="item" id="products">
+                    <img src="../img/1291777_price_price tag_pricing_product_icon.png"
+                                                     height="21" width="21"/>
+                    <p>sản phẩm</p>
+                </div>
+                <div class="item" id="comments">
+                    <img src="../img/9110966_comment_text_icon.png" height="21" width="21"/>
+                    <p>nhận xét</p>
+                </div>
+                <div class="item" id="contact">
+                    <img src="../img/1954539_call_contact_mobile_phone_telephone_icon.png" height="21" width="21"/>
+                    <p>liên hệ</p>
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div class="image">
+                <img src="../img/tradao.jpg" height="400" width="400"/>
+            </div>
+            <div class="information">
+                <form>
+                    <h3>Thông tin sản phẩm</h3>
+                    <div class="product-information">
+                        <div class="item" id="name">Tên sản phẩm:</div>
+                        <div class="item" id="size">Size:</div>
 
+                        <div class="item" id="price">Giá:</div>
+                        <div class="item" id="quantity">Số lượng:</div>
+<!--                        <div class="item" id="total">Thành tiền: </div>-->
+                    </div>
+                    <div class="key-information">
+                        <div class="item" id="ten">Tên sản phẩm:</div>
+                        <select id="myComboBox" class="item">
+                            <option value="option1">Nhỏ</option>
+                            <option value="option2">Vừa</option>
+                            <option value="option3">Lớn</option>
+                        </select>
+                        <div class="item" id="gia">Giá:</div>
+                        <div id="sl" class="item">
+                            <div class="adjust" id="decrease">-</div>
+                            <input type="text" class="count" value="1">
+                            <div class="adjust" id="increase">+</div>
+                        </div>
+                    </div>
+                </form>
+                <form>
+                    <h3>Thông tin khách hàng</h3>
+                    <div class="customer-information">
+                        <label for="customer-name">Tên khách hàng:</label>
+                        <input type="text" id="customer-name" name="customer-name"><br>
+
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email"><br>
+
+                        <label for="phone-number">Số điện thoại: </label>
+                        <input type="text" id="phone-number" name="phone-number"><br>
+
+                        <label for="address">Địa chỉ: </label>
+                        <input type="text" id="address" name="address"><br>
+
+                    </div>
+                </form>
+                <form>
+                    <div class="checkbox-part">
+                        <input type="checkbox" id="checkbox" name="checkbox"><br>
+                        <label for="checkbox">Thêm vào địa chỉ nhận hàng </label>
+                    </div>
+                    <div id="price-total">
+                        <div class="item" id="total">Thành tiền: </div>
+                    </div>
+                    <form>
+                        <div id="event">
+                            <button class="add-cart">Thêm vào giỏ hàng</button>
+                            <button class="mua-ngay">Mua ngay</button>
+                        </div>
+                    </form>
+                </form>
+            </div>
+        </div>
     </div>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script src="../js/buynow.js"></script>

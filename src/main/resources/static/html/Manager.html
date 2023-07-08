@@ -5,6 +5,7 @@
 <!--    <base href="http://localhost:8888/home/">-->
     <title>Đăng ký tài khoản</title>
     <link rel="stylesheet" href="../css/manager.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" class="css">
 
 </head>
 <body>
@@ -33,15 +34,15 @@
                         <div class="item-content" id="Product">Product</div>
                     </div>
                 </div>
-                <div id="actions">
-                </div>
                 <div class="item">
-                    <a href="html/formlogin.html">
                         <img id="user" src="/img/user.png" height="21" width="21"/>
-                    </a>
                 </div>
             </div>
         </header>
+        <div id="event-access" style="display: none">
+            <div class="item" id="log-out">Log Out</div>
+            <div class="item" id="edit-pass">Edit Password</div>
+        </div>
         <div id="container">
             <div id="container-account" style="display: none;">
                 <h1 class="h1">Account List</h1>
@@ -279,21 +280,54 @@
 
         </div>
     </div>
+    <div id="event-area" style="display: none">
+        <form action="" id="form-login">
+            <h1 class="form-heading">Edit Password</h1>
+            <div class="formgroup">
+                <input type="password" class="form-input" id="old-pass" placeholder="Old password">
+                <div class="eye">
+                    <i class="far fa-eye-slash"></i>
+                </div>
+            </div>
+            <div class="announce" id="announce-old-pass" style="display: none">Your password incorrect</div>
+            <div class="formgroup">
+                <input type="password" class="form-input" id="new-pass" placeholder="New password">
+                <div class="eye">
+                    <i class="far fa-eye-slash"></i>
+                </div>
+            </div>
+            <div class="formgroup">
+                <input type="password" class="form-input" id="retype" placeholder="Retype new password">
+                <div class="eye">
+                    <i class="far fa-eye-slash"></i>
+                </div>
+            </div>
+            <div class="announce" id="announce-new-pass" style="display: none">You retype new password doesn't match</div>
+            <div id="actions">
+                <button class="form-submit" id="cancel">Cancel</button>
+                <button class="form-submit" id="action">Action</button>
+            </div>
+
+        </form>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="../js/managerproduct.js"></script>
-    <script src="../js/manageraccount.js"></script>
-    <script src="../js/managercomment.js"></script>
-    <script src="../js/managercustomer.js"></script>
-    <script src="../js/managerorders.js"></script>
-    <script src="../js/managercategory.js"></script>
+<!--    <script src="../js/managerproduct.js"></script>-->
+<!--    <script src="../js/manageraccount.js"></script>-->
+<!--    <script src="../js/managercomment.js"></script>-->
+<!--    <script src="../js/managercustomer.js"></script>-->
+<!--    <script src="../js/managerorders.js"></script>-->
+<!--    <script src="../js/managercategory.js"></script>-->
+    <script src="../js/manage-event-access.js"></script>
     <script>
         $(document).ready(function () {
             $(window).scroll(function () {
                 if ($(this).scrollTop()) {
                     $('header').addClass('sticky');
+                    $('#event-access').addClass('sticky');
                 } else {
                     $('header').removeClass('sticky');
+                    $('#event-access').removeClass('sticky');
                 }
             })
         })

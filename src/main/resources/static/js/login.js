@@ -28,12 +28,17 @@ $(document).ready(function (){
                if(username === "admin@gmail.com") {
                    if (response.password === password) {
                        // Đăng nhập thành công
-                       window.location.href = '../html/Manager.html';
+                       window.location.href = '../html/Manager.html?id=' + response.id;
                    } else {
                        alert('Password wrong. Please retype your password')
                    }
-               } else{
-
+               } else if(username === response.username) {
+                   if (response.password === password) {
+                       // Đăng nhập thành công
+                       window.location.href = '../#?id=' + response.id;
+                   } else {
+                       alert('Password wrong. Please retype your password')
+                   }
                }
            },
            error: function(xhr, status, error){
