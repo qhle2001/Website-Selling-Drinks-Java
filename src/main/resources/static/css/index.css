@@ -490,3 +490,63 @@ header.sticky #menu .item .a{
 #footer .box form .item{
     margin-top: 20px;
 }
+
+#event-access{
+    z-index: 1;
+    position: fixed;
+    /*background-color: #626a67;*/
+    width: 200px;
+    /*height: 100px;*/
+    top: 65px;
+    right: 180px;
+    border: 1px solid #626a67;
+    border-radius: 10px;
+    padding: 10px 0px;
+    transition: all 0.5s ease-in-out;
+    background: #fff;
+    color: #000;
+
+}
+
+#event-access.sticky{
+    z-index: 1;
+    background: #626a67;
+    opacity: 0.9;
+    top: 56px;
+    box-shadow: 0px 5px 15px;
+}
+
+#event-access.sticky .item{
+    color: #fff;
+    border-bottom: 1px solid #000;
+}
+
+#event-access .item{
+    margin-top: 10px;
+    border-bottom: 1px solid #626a67;
+    display: flex;
+}
+#event-access .item:hover{
+    background-color: #dddddd;
+    color: #000;
+}
+#event-access .event-img{
+    width: 20px;
+    height: 20px;
+}
+#event-access .event-item{
+    margin-left: 15px;
+}
+#cart-number{
+    position: absolute;
+    /*z-index: 1;*/
+    color: red;
+    top: 8px;
+    right: 280px;
+    transition: all 0.5s ease-in-out;
+    /*background: #fff;*/
+}
+#cart-number.sticky{
+    color: #fff;
+    top: 2px;
+}

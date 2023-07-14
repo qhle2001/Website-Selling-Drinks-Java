@@ -10,4 +10,6 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 //    Page<ProductEntity> findByCategoryId(Long categoryId);
 
     int countByCategrId(long categoryId);
+
+//    ProductEntity findOneByTitle(String title);
 }

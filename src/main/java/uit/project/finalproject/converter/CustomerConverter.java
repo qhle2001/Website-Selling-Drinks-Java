@@ -10,10 +10,9 @@ import uit.project.finalproject.entity.AccEntity;
 public class CustomerConverter {
     public CustomerEntity toEntity(CustomerDTO dto){
         CustomerEntity entity = new CustomerEntity();
-        entity.setFirstname(dto.getFirstname());
-        entity.setLastname(dto.getLastname());
-        entity.setDayofbirth(dto.getDayofbirth());
-        entity.setParticipantdate(dto.getParticipantdate());
+        entity.setFullname(dto.getFullname());
+        entity.setEmail(dto.getEmail());
+        entity.setPhonenumber(dto.getPhonenumber());
         entity.setHomeaddress(dto.getHomeaddress());
 
         if (dto.getAccount_id() != null) {
@@ -30,10 +29,9 @@ public class CustomerConverter {
         if(entity.getId() != null){
             dto.setId(entity.getId());
         }
-        dto.setFirstname(entity.getFirstname());
-        dto.setLastname(entity.getLastname());
-        dto.setDayofbirth(entity.getDayofbirth());
-        dto.setParticipantdate(entity.getParticipantdate());
+        dto.setFullname(entity.getFullname());
+        dto.setEmail(entity.getEmail());
+        dto.setPhonenumber(entity.getPhonenumber());
         dto.setHomeaddress(entity.getHomeaddress());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setCreatedBy(entity.getCreatedBy());
@@ -52,10 +50,9 @@ public class CustomerConverter {
     }
 
     public CustomerEntity toEntity(CustomerDTO dto, CustomerEntity entity){
-        entity.setFirstname(dto.getFirstname());
-        entity.setLastname(dto.getLastname());
-        entity.setDayofbirth(dto.getDayofbirth());
-        entity.setParticipantdate(dto.getParticipantdate());
+        entity.setFullname(dto.getFullname());
+        entity.setEmail(dto.getEmail());
+        entity.setPhonenumber(dto.getPhonenumber());
         entity.setHomeaddress(dto.getHomeaddress());
 
         if (dto.getAccount_id() != null) {

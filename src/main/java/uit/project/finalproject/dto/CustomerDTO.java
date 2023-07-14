@@ -3,14 +3,36 @@ package uit.project.finalproject.dto;
 import java.util.Date;
 
 public class CustomerDTO extends AbstracDTO<CustomerDTO>{
-    private String firstname;
-    private String lastname;
-    private Date dayofbirth;
-    private Date participantdate;
+    private String fullname;
+    private String email;
+    private String phonenumber;
     private String homeaddress;
-    private String picture;
     private String username;
     private Long account_id;
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
 
     public Long getAccount_id() {
         return account_id;
@@ -20,52 +42,12 @@ public class CustomerDTO extends AbstracDTO<CustomerDTO>{
         this.account_id = account_id;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Date getDayofbirth() {
-        return dayofbirth;
-    }
-
-    public void setDayofbirth(Date dayofbirth) {
-        this.dayofbirth = dayofbirth;
-    }
-
-    public Date getParticipantdate() {
-        return participantdate;
-    }
-
-    public void setParticipantdate(Date participantdate) {
-        this.participantdate = participantdate;
-    }
-
     public String getHomeaddress() {
         return homeaddress;
     }
 
     public void setHomeaddress(String homeaddress) {
         this.homeaddress = homeaddress;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
 
     public String getUsername() {

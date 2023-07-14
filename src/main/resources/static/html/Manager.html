@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 <!--    <base href="http://localhost:8888/home/">-->
-    <title>Đăng ký tài khoản</title>
+    <title>Quản lý</title>
     <link rel="stylesheet" href="../css/manager.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" class="css">
 
@@ -52,6 +52,7 @@
                         <th>ID</th>
                         <th>UserName</th>
                         <th>Password</th>
+                        <th>Customer Name</th>
                         <th>Picture</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
@@ -154,9 +155,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Account ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Day Of Birth</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
                         <th>Home Address</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
@@ -206,6 +207,9 @@
                         <th>Name</th>
                         <th>Category Id</th>
                         <th>Picture</th>
+                        <th>Small</th>
+                        <th>Medium</th>
+                        <th>Large</th>
                         <th>Created Date</th>
                         <th>Modified Date</th>
                         <th>Actions</th>
@@ -234,6 +238,15 @@
                             <label for="product-categoryCode">Category Code:</label>
                             <input type="text" id="product-categoryCode" name="product-categoryCode"><br>
 
+                            <label for="product-small">Small:</label>
+                            <input type="text" id="product-small" name="product-small"><br>
+
+                            <label for="product-medium">Medium:</label>
+                            <input type="text" id="product-medium" name="product-medium"><br>
+
+                            <label for="product-large">Large:</label>
+                            <input type="text" id="product-large" name="product-large"><br>
+
                             <label for="product-picture">Picture: </label>
                             <input type="text" id="product-picture" name="product-picture"><br>
 
@@ -255,7 +268,6 @@
                     <form>
                         <div class="image-container">
                             <img id="edit-image-preview" class="image-preview" src="#" height="100" width="100">
-
                         </div>
                         <div>
                         <label for="product">Id:</label>
@@ -267,12 +279,27 @@
                             <label for="product-categoryCode">Category Code:</label>
                             <input type="text" id="edit-product-categoryCode" name="product-categoryCode"><br>
 
+                            <label for="product-small">Small:</label>
+                            <input type="text" id="edit-product-small" name="product-small"><br>
+
+                            <label for="product-medium">Medium:</label>
+                            <input type="text" id="edit-product-medium" name="product-medium"><br>
+
+                            <label for="product-large">Large:</label>
+                            <input type="text" id="edit-product-large" name="product-large"><br>
+
                             <label for="product-picture">Picture: </label>
                             <input type="text" id="edit-product-picture" name="product-picture"><br>
                         </div>
                         <div>
-                            <button id="update-product">Update</button>
-                            <button id="cancel-edit">Cancel</button>
+                            <input type="file" id="edit-image-input" accept="image/*">
+                        </div>
+                        <div>
+                            <p id="edit-image-name"></p>
+                        </div>
+                        <div>
+                            <button type="button" id="update-product">Update</button>
+                            <button type="button" id="cancel-edit">Cancel</button>
                         </div>
                     </form>
                 </div>
@@ -312,12 +339,12 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<!--    <script src="../js/managerproduct.js"></script>-->
-<!--    <script src="../js/manageraccount.js"></script>-->
+    <script src="../js/managerproduct.js"></script>
+    <script src="../js/manageraccount.js"></script>
 <!--    <script src="../js/managercomment.js"></script>-->
-<!--    <script src="../js/managercustomer.js"></script>-->
-<!--    <script src="../js/managerorders.js"></script>-->
-<!--    <script src="../js/managercategory.js"></script>-->
+    <script src="../js/managercustomer.js"></script>
+    <script src="../js/managerorders.js"></script>
+    <script src="../js/managercategory.js"></script>
     <script src="../js/manage-event-access.js"></script>
     <script>
         $(document).ready(function () {

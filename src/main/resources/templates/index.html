@@ -32,32 +32,31 @@
                 <div id="actions">
                 </div>
                 <div class="item">
-                    <a th:href="@{/html/formlogin.html}">
-                        <img id="user" th:src="@{/img/user.png}" height="21" width="21"/>
-                    </a>
+                    <img id="user" th:src="@{/img/user.png}" height="21" width="21"/>
                 </div>
                 <div class="item">
                     <a>
                         <img id="cart" th:src="@{/img/cart.png}" height="21" width="21"/>
                     </a>
                 </div>
-<!--                <li>-->
-<!--                    <div class="product-item">-->
-<!--                        <div class="product-top">-->
-<!--                            <a href="" class="product-thumb">-->
-<!--                                <img src="../static/img/1.bmp" height="100" width="100"/>-->
-<!--                            </a>-->
-<!--&lt;!&ndash;                            mua ngay&ndash;&gt;-->
-<!--                        </div>-->
-<!--                        <div class="product-infor">-->
-<!--                            <a href="" class="product-cart">Bags</a>-->
-<!--                            <a href="" class="product-name">Daisy Bag Sonia by Sonia Rykiel</a>-->
-<!--                            <div class="product-price">$2.999,00</div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </li>-->
             </div>
+            <div id="cart-number" style="display: none"></div>
         </header>
+        <div id="event-access" style="display: none">
+            <div class="item" id="customername" style="display: none">Tên</div>
+            <div class="item" id="log-in" style="display: none">
+                <img class="event-img" th:src="@{/img/7853770_kashifarif_login_account_profile_user_icon.png}"/>
+                <div class="event-item">Đăng nhập</div>
+            </div>
+            <div class="item" id="setting" style="display: none">
+                <img class="event-img" th:src="@{/img/1814117_gear_options_preferences_setting_icon.png}"/>
+                <div class="event-item">Cài đặt</div>
+            </div>
+            <div class="item" id="log-out" style="display: none">
+                <img class="event-img" th:src="@{/img/7853741_logout_kashifarif_exit_out_close_icon.png}"/>
+                <div class="event-item">Đăng xuất</div>
+            </div>
+        </div>
         <div id="container-information"></div>
     </div>
 
@@ -69,8 +68,12 @@
             $(window).scroll(function () {
                 if ($(this).scrollTop()) {
                     $('header').addClass('sticky');
+                    $('#event-access').addClass('sticky');
+                    $('#cart-number').addClass('sticky');
                 } else {
                     $('header').removeClass('sticky');
+                    $('#event-access').removeClass('sticky');
+                    $('#cart-number').removeClass('sticky');
                 }
             })
         })

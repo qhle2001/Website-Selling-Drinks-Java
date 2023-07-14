@@ -75,7 +75,7 @@ public class AccService implements iAccservice {
             AccDTO accDTO = accConverter.toDTO(accEntity);
 
             // Lấy danh sách CustomerEntity từ AccEntity
-            List<CustomerEntity> customerEntities = (List<CustomerEntity>) accEntity.getCustomer();
+            List<CustomerEntity> customerEntities = accEntity.getCustomer();
 
             // Chuyển đổi danh sách CustomerEntity sang danh sách CustomerDTO
             List<CustomerDTO> customerDTOs = new ArrayList<>();

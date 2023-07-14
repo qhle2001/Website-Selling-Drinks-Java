@@ -1,11 +1,40 @@
 package uit.project.finalproject.dto;
 
+import java.util.List;
+
 public class ProductDTO extends AbstracDTO<ProductDTO>{
     private String title;
     private String categoryCode;
     private String picture;
     private CategoryDTO category;
     private Long category_id;
+    private String smallsize;
+    private String medium;
+    private String large;
+
+    public String getSmallsize() {
+        return smallsize;
+    }
+
+    public void setSmallsize(String smallsize) {
+        this.smallsize = smallsize;
+    }
+
+    public String getMedium() {
+        return medium;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
+    }
+
+    public String getLarge() {
+        return large;
+    }
+
+    public void setLarge(String large) {
+        this.large = large;
+    }
 
     public Long getCategory_id() {
         return category_id;

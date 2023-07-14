@@ -15,6 +15,9 @@ public class ProductConverter {
         ProductEntity entity = new ProductEntity();
         entity.setTitle(dto.getTitle());
         entity.setPicture(dto.getPicture());
+        entity.setSmallsize(dto.getSmallsize());
+        entity.setMedium(dto.getMedium());
+        entity.setLarge(dto.getLarge());
 
         if (dto.getCategory_id() != null) {
             CategoryEntity categoryEntity = new CategoryEntity();
@@ -32,6 +35,9 @@ public class ProductConverter {
         }
         dto.setTitle(entity.getTitle());
         dto.setPicture(entity.getPicture());
+        dto.setSmallsize(entity.getSmallsize());
+        dto.setMedium(entity.getMedium());
+        dto.setLarge(entity.getLarge());
         dto.setCreatedDate(entity.getCreatedDate());
         dto.setCreatedBy(entity.getCreatedBy());
         dto.setModifiedDate(entity.getModifiedDate());
@@ -50,6 +56,9 @@ public class ProductConverter {
     public ProductEntity toEntity(ProductDTO dto, ProductEntity entity){
         entity.setTitle(dto.getTitle());
         entity.setPicture(dto.getPicture());
+        entity.setSmallsize(dto.getSmallsize());
+        entity.setMedium(dto.getMedium());
+        entity.setLarge(dto.getLarge());
 
         if (dto.getCategory_id() != null) {
             CategoryEntity categoryEntity = new CategoryEntity();

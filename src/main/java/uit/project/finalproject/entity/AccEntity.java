@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Entity
 @Table(name = "acc")
 public class AccEntity extends BaseEntity{
@@ -14,6 +13,17 @@ public class AccEntity extends BaseEntity{
     private String password;
     @Column
     private String picture;
+    @Column
+    private String customer_name;
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
     @OneToMany(
             mappedBy = "account"
     )

@@ -44,15 +44,44 @@ $(document).ready(function(){
         // $('#event-area').show();
         event.preventDefault();
         checkLogin(accId);
-        if ($('#new-pass').val() === $('#retype').val()){
-            alert('match')
-            $('#announce-new-pass').hide();
-            $('#announce-old-pass').hide();
-        }else{
-            $('#announce-new-pass').show();
-            $('#retype').val('');
-        }
     })
+    function editpass(Id){
+        $.ajax({
+            url: '/acc',
+            type: 'GET',
+            data: {
+                page: null,
+                limit: null
+            },
+            success: function(response) {
+                var account = response.listResults;
+                account.forEach(function(account) {
+                    if(account.id === Id){
+                        var data = {
+                            username: account.username,
+                            password: $('#retype').val(),
+                            picture: account.picture,
+                            customer_name: account.customer_name
+                        }
+                        $.ajax({
+                            url: '/acc/' + Id,
+                            method: 'PUT',
+                            data: JSON.stringify(data),
+                            contentType: 'application/json',
+                            success: function (response) {
+                                alert('Password Updated Success');
+                                getaccountList();
+                                $('#event-area').hide();
+                                $('#old-pass').val('');
+                                $('#new-pass').val('');
+                                $('#retype').val('');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
     function checkLogin(Id){
         $.ajax({
             url: '/acc',
@@ -66,7 +95,17 @@ $(document).ready(function(){
                 account.forEach(function(account){
                     if(account.id === Id){
                         if(account.password === $('#old-pass').val()){
-                            $('#announce-old-pass').hide();
+                            // $('#announce-old-pass').hide();
+                            if ($('#new-pass').val() === $('#retype').val()){
+                                // editpass(accId);
+                                $('#announce-new-pass').hide();
+                                $('#announce-old-pass').hide();
+                                editpass(Id);
+                            }else{
+                                $('#announce-new-pass').show();
+                                $('#retype').val('');
+                            }
+
                         }else{
                             $('#announce-old-pass').show();
                             $('#announce-new-pass').hide();
@@ -77,7 +116,6 @@ $(document).ready(function(){
                         }
                     }
                 });
-
 
                 // Kiểm tra sự trùng khớp của username và password
                 if(username === "admin@gmail.com") {

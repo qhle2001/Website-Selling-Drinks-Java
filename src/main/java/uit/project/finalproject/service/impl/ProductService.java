@@ -3,11 +3,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import uit.project.finalproject.converter.ProductConverter;
+//import uit.project.finalproject.converter.ProductdetailConverter;
+import uit.project.finalproject.dto.CategoryDTO;
 import uit.project.finalproject.dto.ProductDTO;
+//import uit.project.finalproject.dto.ProductdetailDTO;
 import uit.project.finalproject.entity.CategoryEntity;
 import uit.project.finalproject.entity.ProductEntity;
+//import uit.project.finalproject.entity.ProductdetailEntity;
 import uit.project.finalproject.filter.repository.CategoryRepository;
 import uit.project.finalproject.filter.repository.ProductRepository;
+//import uit.project.finalproject.filter.repository.ProductdetailRepository;
 import uit.project.finalproject.service.iProductservice;
 import org.springframework.data.domain.Page;
 
@@ -79,16 +84,6 @@ public class ProductService implements iProductservice {
         }
         return results;
     }
-//    @Override
-//    public List<ProductDTO> findByCategoryId(long categoryId) {
-//        List<ProductDTO> results = new ArrayList<>();
-//        Page<ProductEntity> entities = productRepository.findByCategrId(categoryId);
-//        for (ProductEntity item : entities.getContent()) {
-//            ProductDTO productDTO = productConverter.toDTO(item);
-//            results.add(productDTO);
-//        }
-//        return results;
-//    }
     @Override
     public int countByCategrId(long categoryId) {
         return productRepository.countByCategrId(categoryId);
@@ -97,12 +92,10 @@ public class ProductService implements iProductservice {
     public List<ProductDTO> findAll() {
         List<ProductDTO> results = new ArrayList<>();
         List<ProductEntity> entities = productRepository.findAll();
-
         for(ProductEntity item: entities){
             ProductDTO productDTO = productConverter.toDTO(item);
             results.add(productDTO);
         }
-
         return results;
     }
 }

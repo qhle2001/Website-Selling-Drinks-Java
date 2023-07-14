@@ -9,19 +9,40 @@ import java.util.Date;
 @Table(name = "customer")
 public class CustomerEntity extends BaseEntity{
     @Column
-    private String firstname;
+    private String fullname;
     @Column
-    private String lastname;
+    private String email;
     @Column
-    private Date dayofbirth;
-    @Column
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date participantdate;
+    private String phonenumber;
     @Column
     private String homeaddress;
     @ManyToOne
     @JoinColumn(name = "account_id")
     private AccEntity account;
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
 
     public AccEntity getAccount() {
         return account;
@@ -29,37 +50,6 @@ public class CustomerEntity extends BaseEntity{
 
     public void setAccount(AccEntity account) {
         this.account = account;
-    }
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public Date getDayofbirth() {
-        return dayofbirth;
-    }
-
-    public void setDayofbirth(Date dayofbirth) {
-        this.dayofbirth = dayofbirth;
-    }
-
-    public Date getParticipantdate() {
-        return participantdate;
-    }
-
-    public void setParticipantdate(Date participantdate) {
-        this.participantdate = participantdate;
     }
 
     public String getHomeaddress() {

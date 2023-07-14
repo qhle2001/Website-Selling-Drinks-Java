@@ -9,11 +9,9 @@
     <div id="wrapper">
         <div id="banner">
             <div class="menu">
-<!--                    <img id="menu-icon" th:src="@{/img/user.png}" height="21" width="21"/>-->
                 <img src="../img/9034957_menu_icon.png" height="21" width="21"/>
             </div>
             <div class="logo">LQH</div>
-<!--        <a href="" class="logo">LQH</a>-->
         </div>
         <div id="left">
             <div class="information-banner">
@@ -83,20 +81,22 @@
 
                     </div>
                 </form>
+                <div class="checkbox-part">
+                    <input type="checkbox" id="checkbox" name="checkbox"><br>
+                    <label for="checkbox">Thêm vào địa chỉ nhận hàng </label>
+                </div>
+                <form id="address-customer" style="display: none"></form>
                 <form>
-                    <div class="checkbox-part">
-                        <input type="checkbox" id="checkbox" name="checkbox"><br>
-                        <label for="checkbox">Thêm vào địa chỉ nhận hàng </label>
+                    <div id="price-delivery">
+                        <div class="item" id="total-delivery">Phí vận chuyển: 15,000,000 VNĐ </div>
                     </div>
                     <div id="price-total">
                         <div class="item" id="total">Thành tiền: </div>
                     </div>
-                    <form>
-                        <div id="event">
-                            <button class="add-cart">Thêm vào giỏ hàng</button>
-                            <button class="mua-ngay">Mua ngay</button>
-                        </div>
-                    </form>
+                    <div id="event">
+                        <button type="button" class="add-cart" id="add-cart">Thêm vào giỏ hàng</button>
+                        <button type="button" class="mua-ngay" id="mua-ngay">Mua ngay</button>
+                    </div>
                 </form>
             </div>
         </div>

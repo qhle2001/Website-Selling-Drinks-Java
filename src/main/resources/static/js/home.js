@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var accountId = parseInt(urlParams.get('id'));
+    // alert(accountId);
+
     var number_of_comment = 0;
     var next = $('.next');
     var prev = $('.prev');
@@ -21,6 +25,9 @@ $(document).ready(function() {
     }
 
     setInterval(changeBackground, 5000);
+    if(accountId){
+        getcartnum();
+    }
 
     var pagecategory = 1;
     var limitcategory = 10;
@@ -103,10 +110,10 @@ $(document).ready(function() {
                     var name = $('<div>').addClass('name').text(product.title);
                     item.append(name);
 
-                    var desc = $('<div>').addClass('desc').text('Mô Tả Ngắn Cho Sản Phẩm');
-                    item.append(desc);
+                    // var desc = $('<div>').addClass('desc').text('Mô Tả Ngắn Cho Sản Phẩm');
+                    // item.append(desc);
 
-                    var price = $('<div>').addClass('price').text('500.000 VNĐ');
+                    var price = $('<div>').addClass('price').text(product.smallsize);
                     item.append(price);
 
                     var add = $('<div>').addClass('add');
@@ -244,7 +251,6 @@ $(document).ready(function() {
         comment.css("transform", "translateY(" + translateY + "px)");
         count--;
     });
-
     prev.click(function(event) {
         event.preventDefault();
         if (count == number_of_comment) {
@@ -256,19 +262,59 @@ $(document).ready(function() {
         count++;
     });
 
-    $(document).on('click', '.buy_now', function() {
+    $(document).on('click', '.buy_now', function(event) {
+        event.preventDefault();
         // var productName = $('.list-products .item').siblings('.name').text();
         var productName = $(this).closest('.list-products .item').find('.name').text();
         var productId = $(this).closest('.list-products .item').attr('id');
 
-        window.location.href = '../html/buynow.html?id=' + productId;
-        // $.ajax({
-        //     url: '../html/buynow.html?id=' + productId,
-        //     success: function(result){
-        //         $('#container-information').html(result);
-        //     }
-        // })
-        // alert(productName);
-        // alert(productId);
+        window.location.href = '../html/buynow.html?id=' + productId + '&id2=' + accountId;
     });
+    var count_click = 0;
+    $(document).on('click', '.cart', function(event){
+        event.preventDefault();
+
+        var productId = $(this).closest('.list-products .item').attr('id');
+        if (accountId) {
+            addcart(productId);
+            count_click++;
+            $('#cart-number').text(count_click);
+            $('#cart-number').show();
+            // getcartnum();
+        }else{
+            $('#cart-number').hide();
+            alert("Bạn cần đăng nhập trước!");
+        }
+    });
+    function addcart(Id){
+        var data = {
+            accId: accountId,
+            productId: Id
+        }
+        $.ajax({
+            url: '/cart',
+            method: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {}
+        });
+    }
+    function getcartnum(){
+        $.ajax({
+            url: '/cart',
+            method: 'GET',
+            data: {
+                page: null,
+                limit: null,
+                accId: accountId
+            },
+            success: function(response){
+                var num = response.listResults.length;
+                $('#cart-number').text(num);
+                if(num > 0){
+                    $('#cart-number').show();
+                }
+            }
+        })
+    }
 });

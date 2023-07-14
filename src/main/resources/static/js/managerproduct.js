@@ -40,7 +40,9 @@ $(document).ready(function() {
             row.append($('<td>').text(product.category_id));
             row.append($('<td>').append($('<img>').attr('src', product.picture).addClass('product-image').attr('height', '100').attr('width', '100')));
 
-            // row.append($('<td>').text(product.picture));
+            row.append($('<td>').text(product.smallsize));
+            row.append($('<td>').text(product.medium));
+            row.append($('<td>').text(product.large));
             row.append($('<td>').text(product.createdDate));
             row.append($('<td>').text(product.modifiedDate));
             row.append(
@@ -113,9 +115,9 @@ $(document).ready(function() {
     $('#add-product-btn').click(function(){
         $('#add-product-form').show();
     });
-    // var file = event.target.files[0];
     // Xử lý sự kiện khi nhấn vào nút "Add"
-    $('#add-product').click(function() {
+    $('#add-product').click(function(event) {
+        event.preventDefault();
         var file = $('#image-input')[0].files[0];
 
         //kiểm tra xem có file ảnh được chọn hay không
@@ -139,7 +141,13 @@ $(document).ready(function() {
             adimagetodatabase();
         }
     });
+    var protitle;
+    var procategorycode;
+    var propicture;
     function adimagetodatabase(){
+        protitle = $('#product-title').val();
+        procategorycode = $('#product-categoryCode').val();
+        propicture = $('#product-picture').val();
         var product = {
             title: $('#product-title').val(),
             categoryCode: $('#product-categoryCode').val(),
@@ -151,19 +159,38 @@ $(document).ready(function() {
             method: 'POST',
             data: JSON.stringify(product),
             contentType: 'application/json',
-            success: function() {
+            success: function(response) {
+                var Id = response.id;
+                editafteradd(Id);
                 getProductList();
                 // Reset các trường input
                 $('#product-title').val('');
                 $('#product-categoryCode').val('');
                 $('#product-picture').val('');
-                alert('Product added successfully');
+                // alert('Product added successfully');
             },
             error: function() {
                 alert('Error occurred while adding the product');
             }
         });
     };
+    function editafteradd(Id){
+        var data = {
+            title: protitle,
+            categoryCode: procategorycode,
+            picture: propicture,
+
+        };
+        $.ajax({
+            url: '/product/' + Id,
+            method: 'PUT',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(response){
+                alert('Product added successfully');
+            }
+        });
+    }
 
     $('#product-picture').prop('disabled', true);
 
@@ -181,6 +208,7 @@ $(document).ready(function() {
 
         // Hiển thị tên ảnh
         $('#product-picture').val("../img/" + file.name);
+        $('#edit-product-picture').val("../img/" + file.name);
     });
 
     // Xử lý sự kiện khi nhấn vào nút Cancel
@@ -197,22 +225,16 @@ $(document).ready(function() {
     // Xử lý sự kiện khi nhấn vào nút "Edit"
     $(document).on('click', '.edit-product', function() {
         productId = $(this).data('id');
-        // alert(productId);
-
-        // Gửi yêu cầu AJAX để lấy thông tin sản phẩm theo ID
         $.ajax({
             url: '/product/' + productId,
             method: 'GET',
             success: function(response) {
-                // Điền thông tin sản phẩm vào form Add Product
                 alert(absolutePath);
                 $('#edit-image-preview').attr('src', response.picture);
-                // $('<img>').attr('src', response.picture);
                 $('#edit-product-id').val(productId);
                 $('#edit-product-title').val(response.title);
                 $('#edit-product-categoryCode').val(response.categoryCode);
                 $('#edit-product-picture').val(response.picture);
-                // Hiển thị form edit Product
                 $('#edit-product-form').show();
             },
             error: function() {
@@ -234,9 +256,6 @@ $(document).ready(function() {
             data: JSON.stringify(product),
             contentType: 'application/json',
             success: function() {
-                // Thực hiện các thao tác cần thiết sau khi cập nhật thành công
-                // Ví dụ: hiển thị thông báo, làm mới danh sách sản phẩm, ẩn form chỉnh sửa, v.v.
-                // alert('Product updated successfully');
                 getProductList();
                 // Reset các trường input
                 $('#edit-product-id').val('');

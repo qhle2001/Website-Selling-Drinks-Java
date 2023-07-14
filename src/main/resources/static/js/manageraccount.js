@@ -1,58 +1,54 @@
-$(document).ready(function (){
-    // $('#container-account').hide();
-    var page = 1;
-    var limit = 10;
-    // Hàm để hiển thị danh sách sản phẩm
-    function showAccountList(accounts) {
-        var accountList = $('#account-list');
-        accountList.empty();
+var page = 1;
+var limit = 10;
+function showAccountList(accounts) {
+    var accountList = $('#account-list');
+    accountList.empty();
 
-        accounts.forEach(function(account) {
-            var row = $('<tr>');
-            row.append($('<td>').text(account.id));
-            row.append($('<td>').text(account.username));
-            row.append($('<td>').text(account.password));
-            row.append($('<td>').text(account.picture));
-            row.append($('<td>').text(account.createdDate));
-            row.append($('<td>').text(account.modifiedDate));
+    accounts.forEach(function(account) {
+        var row = $('<tr>');
+        row.append($('<td>').text(account.id));
+        row.append($('<td>').text(account.username));
+        row.append($('<td>').text(account.password));
+        row.append($('<td>').text(account.customer_name));
+        row.append($('<td>').text(account.picture));
+        row.append($('<td>').text(account.createdDate));
+        row.append($('<td>').text(account.modifiedDate));
 
-            accountList.append(row);
+        accountList.append(row);
 
-        });
-    }
+    });
+}
 
-    // Hàm để gửi yêu cầu API để lấy danh sách tài khoaản
-    function getaccountList() {
-        $.ajax({
-            url: '/acc',
-            method: 'GET',
-            data: {
-                page: page,
-                limit: limit
-            },
-            success: function(response) {
-                showAccountList(response.listResults);
+function getaccountList() {
+    $.ajax({
+        url: '/acc',
+        method: 'GET',
+        data: {
+            page: page,
+            limit: limit
+        },
+        success: function (response) {
+            showAccountList(response.listResults);
 
-                // Kiểm tra nếu còn sản phẩm để hiển thị
-                if (page < response.totalpage) {
-                    $('#load-more-account').show();
+            // Kiểm tra nếu còn sản phẩm để hiển thị
+            if (page < response.totalpage) {
+                $('#load-more-account').show();
 
-                } else {
-                    $('#load-more-account').hide();
-                }
-                if (page > 1){
-                    $('#load-previous-account').show();
-                }else{
-                    $('#load-previous-account').hide();
-                }
-            },
-            error: function() {
-                alert('Error occurred while fetching account list');
+            } else {
+                $('#load-more-account').hide();
             }
-        });
-    }
-
-    // Gọi hàm getaccountList để hiển thị danh sách sản phẩm ban đầu
+            if (page > 1) {
+                $('#load-previous-account').show();
+            } else {
+                $('#load-previous-account').hide();
+            }
+        },
+        error: function () {
+            alert('Error occurred while fetching account list');
+        }
+    });
+}
+$(document).ready(function (){
     getaccountList();
 
     // Xử lý sự kiện khi nhấn vào nút "Load More"

@@ -11,4 +11,6 @@ public interface iCustomerservice {
     void delete(long[] ids);
     List<CustomerDTO> findAll(Pageable pageable);
     int totalItem();
+
+    List<CustomerDTO> findAll();
 }

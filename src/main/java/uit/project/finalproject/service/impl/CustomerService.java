@@ -59,4 +59,14 @@ public class CustomerService implements iCustomerservice{
     public int totalItem() {
         return (int) customerRepository.count();
     }
+    @Override
+    public List<CustomerDTO> findAll() {
+        List<CustomerDTO> results = new ArrayList<>();
+        List<CustomerEntity> entities = customerRepository.findAll();
+        for(CustomerEntity item: entities){
+            CustomerDTO customerDTO = customerConverter.toDTO(item);
+            results.add(customerDTO);
+        }
+        return results;
+    }
 }

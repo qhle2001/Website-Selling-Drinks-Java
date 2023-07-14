@@ -35,7 +35,7 @@ $(document).ready(function (){
                } else if(username === response.username) {
                    if (response.password === password) {
                        // Đăng nhập thành công
-                       window.location.href = '../#?id=' + response.id;
+                       window.location.href = '../?id=' + response.id;
                    } else {
                        alert('Password wrong. Please retype your password')
                    }

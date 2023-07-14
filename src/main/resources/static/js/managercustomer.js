@@ -13,9 +13,9 @@ $(document).ready(function() {
             var row = $('<tr>');
             row.append($('<td>').text(customer.id));
             row.append($('<td>').text(customer.account_id));
-            row.append($('<td>').text(customer.firstname));
-            row.append($('<td>').text(customer.lastname));
-            row.append($('<td>').text(customer.dayofbirth));
+            row.append($('<td>').text(customer.fullname));
+            row.append($('<td>').text(customer.email));
+            row.append($('<td>').text(customer.phonenumber));
             row.append($('<td>').text(customer.homeaddress));
             row.append($('<td>').text(customer.createdDate));
             row.append($('<td>').text(customer.modifiedDate));
