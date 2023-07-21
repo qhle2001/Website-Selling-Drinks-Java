@@ -67,9 +67,9 @@ $(document).ready(function() {
                 products.forEach(function (product) {
                     // alert(product.id.length)
                     if (product.category_id === categoryId) {
-                        var item = $('<div>').addClass('item');
+                        var item = $('<div>').addClass('item').attr('id', product.id);
 
-                        var image = $('<img>').attr('src', product.picture).attr('height', '174').attr('width', '256');
+                        var image = $('<img>').attr('src', product.picture).attr('height', '150').attr('width', '200');
                         item.append(image);
 
                         var stars = $('<div>').addClass('stars');
@@ -82,10 +82,11 @@ $(document).ready(function() {
                         var name = $('<div>').addClass('name').text(product.title);
                         item.append(name);
 
-                        var desc = $('<div>').addClass('desc').text('Mô Tả Ngắn Cho Sản Phẩm');
-                        item.append(desc);
+                        // var desc = $('<div>').addClass('desc').text('Mô Tả Ngắn Cho Sản Phẩm');
+                        // item.append(desc);
 
-                        var price = $('<div>').addClass('price').text('500.000 VNĐ');
+                        var price_number = parseInt(product.smallsize);
+                        var price = $('<div>').addClass('price').text(formatCurrency(price_number) + ' VNĐ');
                         item.append(price);
 
                         var add = $('<div>').addClass('add');
@@ -120,52 +121,7 @@ $(document).ready(function() {
             }
         });
     }
-
-    // $(document).on('click', '#container-product .list-page .item .ploadpage', function(){
-    //     categoryId = 1;
-    //     page = parseInt($(this).text());
-    //     containerproduct.empty();
-    //     var classh3 = $('<h3>').text('cà phê');
-    //     containerproduct.append(classh3);
-    //     getProduct('coffee');
-    // });
-    // $(document).on('click', '#container-freeze .list-page .item .ploadpage', function(){
-    //     categoryId = 3;
-    //     page = parseInt($(this).text());
-    //     containerfreeze.empty();
-    //     var classh3 = $('<h3>').text('freeze');
-    //     containerfreeze.append(classh3);
-    //     getProduct('freeze');
-    // });
-    // $(document).on('click', '#container-tea .list-page .item .ploadpage', function(){
-    //     categoryId = 2;
-    //     var currentPage = page;
-    //     page = parseInt($(this).text());
-    //     // var container = $('#container-product');
-    //     containertea.empty();
-    //     // var productListContainer = container.find('.list-products');
-    //     // productListContainer.empty();
-    //     var classh3 = $('<h3>').text('Trà');
-    //     containertea.append(classh3);
-    //     getProduct('tea', containertea);
-    //
-    //     // if (page > currentPage) {
-    //     //     translateY += 400
-    //     //     productListContainer.css('transform', `translateY(${translateY}px)`);
-    //     // } else {
-    //     //     translateY += -400
-    //     //     productListContainer.css('transform', `translateY(${translateY}px)`);
-    //     // }
-    // });
-    // $(document).on('click', '#container-another .list-page .item .ploadpage', function(){
-    //     categoryId = 4;
-    //     page = parseInt($(this).text());
-    //     containeranother.empty();
-    //     var classh3 = $('<h3>').text('khác');
-    //     containeranother.append(classh3);
-    //     getProduct('other');
-    // });
-    // $(document).on('click', '.list-page .item .ploadpage', function (){
-    //     $(this).css("color", "blue");
-    // });
+    function formatCurrency(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 });

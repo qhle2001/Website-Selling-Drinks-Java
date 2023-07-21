@@ -9,6 +9,7 @@ $(document).ready(function(){
     var isCheckedchange;
     var formattedPrice = 0;
     var checkboxOrcombobox = true;
+    var username_cus;
     function getproductincart(){
         $.ajax({
             url: '/cart',
@@ -84,7 +85,7 @@ $(document).ready(function(){
                         var option2 = $('<option>').val('option2').text('Vừa');
                         var option3 = $('<option>').val('option3').text('Lớn');
                         selectElement.append(option1, option2, option3);
-                        var price = $('<div>').addClass('price-number').text(product.smallsize);
+                        var price = $('<div>').addClass('price-number').text(formatCurrency(product.smallsize) + " VNĐ");
                         var slContainer = $('<div>').addClass('sl');
                         var decreaseBtn = $('<div>').addClass('decrease').text('-');
                         var countInput = $('<input>').addClass('count').attr('type', 'text').val('1');
@@ -167,9 +168,11 @@ $(document).ready(function(){
         e.preventDefault();
         if(isManagerVisible){
             $('#manager').animate({right: '-100%'}, 500);
+            $("#right").css("overflow-y", "hidden");
             $(this).find('img').attr('src', '../img/prev.png');
         } else{
-            $('#manager').animate({right: '0px'}, 500);
+            $('#manager').animate({right: '-30px'}, 500);
+            $("#right").css("overflow-y", "scroll");
             $(this).find('img').attr('src', '../img/next.png');
         }
         isManagerVisible = !isManagerVisible;
@@ -182,16 +185,16 @@ $(document).ready(function(){
         if (count > 1) {
             count--;
             $("#" + productId + " .count").val(count);
-        }
-        if(isChecked){
-            var price = formatpriceInt($("#" + productId + " .price-number").text());
-            totalprice -= price;
-            $('#total-price-item').text("Tiền hàng: " + formatCurrency(totalprice) + " VNĐ");
-            showdeliverycost(totalprice);
-        } else{
-            totalprice = totalpricetemp;
-            $('#total-price-item').text("Tiền hàng: " + formatCurrency(totalprice) + " VNĐ");
-            showdeliverycost(totalprice);
+            if(isChecked){
+                var price = formatpriceInt($("#" + productId + " .price-number").text());
+                totalprice -= price;
+                $('#total-price-item').text("Tiền hàng: " + formatCurrency(totalprice) + " VNĐ");
+                showdeliverycost(totalprice);
+            } else{
+                totalprice = totalpricetemp;
+                $('#total-price-item').text("Tiền hàng: " + formatCurrency(totalprice) + " VNĐ");
+                showdeliverycost(totalprice);
+            }
         }
     })
     $(document).on('click', '.increase', function(){
@@ -229,7 +232,9 @@ $(document).ready(function(){
         } else {
             totalprice -= (price * quantity);
             $('#total-price-item').text("Tiền hàng: " + formatCurrency(totalprice) + " VNĐ");
-            showdeliverycost(totalprice);
+            $('#total-delivery').text("Phí vận chuyển: 0 VNĐ");
+            $('#total').text('Thành tiền: ' + formatCurrency(totalprice) + " VNĐ");
+            // showdeliverycost(totalprice);
         }
     });
     function getSelectedSize(productId, cartId, Element){
@@ -333,6 +338,7 @@ $(document).ready(function(){
         totalprice -= (getoldprice * quantity);
         totalprice += (getnewprice * quantity);
         $('#total-price-item').text("Tiền hàng: " + formatCurrency(totalprice) + " VNĐ");
+        showdeliverycost(totalprice);
     }
     function formatCurrency(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -384,4 +390,86 @@ $(document).ready(function(){
             $('#total').text('Thành tiền: ' + formatCurrency(total) + " VNĐ");
         }
     }
+    $('#comments').on('click', function(){
+        window.location.href = '../html/comment.html?id=' + accountId;
+    })
+    $(document).on('click', '.delete', function(){
+        var wrapperProductId = $(this).closest('.wrapper-product').attr('id');
+        $.ajax({
+            url: '/cart',
+            method: 'DELETE',
+            data: JSON.stringify([wrapperProductId]),
+            contentType: 'application/json',
+            success: function() {
+                getproductincart();
+            },
+            error: function() {
+                alert('Error occurred while deleting the product');
+            }
+        });
+    })
+    getusetname();
+    function getusetname() {
+        $.ajax({
+            url: '/acc',
+            method: 'GET',
+            data: {
+                page: null,
+                limit: null,
+            },
+            success: function (response) {
+                var getid = response.listResults;
+                getid.forEach(function (account) {
+                    if (account.id === accountId) {
+                        username_cus = account.username;
+                    }
+                });
+            }
+        });
+    }
+    $('#add_address').on('click', function(){
+        if($('#customer-name').val() !== '' & $('#email').val() !== ''
+            & $('#phone-number').val() !== '' & $('#address').val() !== ''){
+            addcusadd();
+        }else{
+            alert('Bạn cần điền đầy đủ thông tin!');
+        }
+    })
+    function addcusadd(){
+        var data = {
+            fullname: $('#customer-name').val(),
+            email: $('#email').val(),
+            phonenumber: $('#phone-number').val(),
+            homeaddress: $('#address').val(),
+            username: username_cus
+        }
+        $.ajax({
+            url: '/customer',
+            method: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function(response){
+                $('#customer-name').val('');
+                $('#email').val('');
+                $('#phone-number').val('');
+                $('#address').val('');
+                getcusadd();
+
+            }
+        })
+    }
+    $(document).on('change', '#address-customer input[type="checkbox"]', function() {
+        // Kiểm tra xem checkbox có được chọn hay không
+        if ($(this).is(':checked')) {
+            // Hủy chọn tất cả các checkbox khác
+            $('#address-customer input[type="checkbox"]').not(this).prop('checked', false);
+        }
+    });
+    $('#products').on('click', function(){
+        window.location.href = '../html/showproducts.html?id=' + accountId;
+    })
+    $('#contact').on('click', function(){
+        window.location.href = '../?id=' + accountId + '&type=' + encodeURIComponent('contact');
+
+    })
 });

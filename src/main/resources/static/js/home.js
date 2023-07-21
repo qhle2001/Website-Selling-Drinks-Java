@@ -15,6 +15,7 @@ $(document).ready(function() {
     var imgs = ["../img/bg2.png", "../img/bg3.png", "../img/bg4.png", "../img/bg5.png"];
     var element = $("#banner");
     var index = 1;
+    var isExist = false;
 
     function changeBackground() {
         element.css("backgroundImage", "url('" + imgs[index] + "')");
@@ -34,8 +35,8 @@ $(document).ready(function() {
     var page = 1;
     var limit  = 4;
     var categoryId;
-    var containerproduct = $('#container-coffee');
-    containerproduct.empty();
+    var containercoffee = $('#container-coffee');
+    containercoffee.empty();
 
     var containertea = $('#container-tea');
     containertea.empty();
@@ -56,30 +57,30 @@ $(document).ready(function() {
         success: function (response) {
             var categories = response.listResults;
             categories.forEach(function (category) {
-                categoryId = category.id;
+                // categoryId = category.id;
                 if (category.code === 'coffee') {
                     var classh3 = $('<h3>').text(category.name);
-                    containerproduct.append(classh3);
-                    getProduct(category.code, containerproduct);
+                    containercoffee.append(classh3);
+                    getProduct(page, category.code, containercoffee, category.id);
                 } else if (category.code === 'tea') {
                     var classh3 = $('<h3>').text(category.name);
                     containertea.append(classh3);
-                    getProduct(category.code, containertea);
+                    getProduct(page, category.code, containertea, category.id);
                 } else if (category.code === 'freeze') {
                     var classh3 = $('<h3>').text(category.name);
                     containerfreeze.append(classh3);
-                    getProduct(category.code, containerfreeze);
+                    getProduct(page, category.code, containerfreeze, category.id);
                 } else {
                     var classh3 = $('<h3>').text(category.name);
                     containeranother.append(classh3);
-                    getProduct(category.code, containeranother);
+                    getProduct(page, category.code, containeranother, category.id);
                 }
                 // getProduct(category.code);
             });
         }
     });
 
-    function getProduct(category, container) {
+    function getProduct(page, category, container, categoryId) {
         $.ajax({
             url: '/product',
             method: 'GET',
@@ -113,7 +114,9 @@ $(document).ready(function() {
                     // var desc = $('<div>').addClass('desc').text('Mô Tả Ngắn Cho Sản Phẩm');
                     // item.append(desc);
 
-                    var price = $('<div>').addClass('price').text(product.smallsize);
+                    var number_price = parseInt(product.smallsize);
+
+                    var price = $('<div>').addClass('price').text(formatCurrency(number_price) + " VNĐ");
                     item.append(price);
 
                     var add = $('<div>').addClass('add');
@@ -150,41 +153,41 @@ $(document).ready(function() {
         });
     }
 
-    $(document).on('click', '#container-product .list-page .item .ploadpage', function(){
-        categoryId = 1;
+    $(document).on('click', '#container-coffee .list-page .item .ploadpage', function(){
+        // categoryId = 1;
         page = parseInt($(this).text());
-        containerproduct.empty();
+        containercoffee.empty();
         var classh3 = $('<h3>').text('cà phê');
-        containerproduct.append(classh3);
-        getProduct('coffee');
+        containercoffee.append(classh3);
+        getProduct(page, 'coffee', containercoffee, 1);
     });
     $(document).on('click', '#container-freeze .list-page .item .ploadpage', function(){
-        categoryId = 3;
+        // categoryId = 3;
         page = parseInt($(this).text());
         containerfreeze.empty();
         var classh3 = $('<h3>').text('freeze');
         containerfreeze.append(classh3);
-        getProduct('freeze');
+        getProduct(page, 'freeze', containerfreeze, 3);
     });
     $(document).on('click', '#container-tea .list-page .item .ploadpage', function(){
-        categoryId = 2;
+        // categoryId = 2;
         page = parseInt($(this).text());
         containertea.empty();
         var classh3 = $('<h3>').text('Trà');
         containertea.append(classh3);
-        getProduct('tea', containertea);
+        getProduct(page, 'tea', containertea, 2);
     });
     $(document).on('click', '#container-another .list-page .item .ploadpage', function(){
-        categoryId = 4;
+        // categoryId = 4;
         page = parseInt($(this).text());
         containeranother.empty();
         var classh3 = $('<h3>').text('khác');
         containeranother.append(classh3);
-        getProduct('other');
+        getProduct(page, 'other', containeranother, 4);
     });
-    $(document).on('click', '.list-page .item .ploadpage', function (){
-        $(this).css("color", "blue");
-    });
+    // $(document).on('click', '.list-page .item .ploadpage', function (){
+    //     $(this).css("color", "blue");
+    // });
     var number_of_comment ;
     $.ajax({
         url: '/comment',
@@ -228,9 +231,11 @@ $(document).ready(function() {
                 account.forEach(function(account){
                     if(account_id === account.id){
                         var avatar = $('<div>').addClass('avatar');
-                        var img = $('<img>').attr('src', account.picture).attr('height', '78').attr('width', '78');
+                        // var image_container = $('<div>').addClass('image-container');
+                        var img = $('<img>').attr('src', account.picture);
+                        // image_container.append(img);
                         avatar.append(img);
-                        var name = $('<div>').addClass('name').text(account.username);
+                        var name = $('<div>').addClass('name').text(account.customer_name);
                         item.append(avatar);
                         item.append(stars);
                         item.append(name);
@@ -270,22 +275,47 @@ $(document).ready(function() {
 
         window.location.href = '../html/buynow.html?id=' + productId + '&id2=' + accountId;
     });
-    var count_click = 0;
+    // var count_click = 0;
     $(document).on('click', '.cart', function(event){
         event.preventDefault();
+        var isExist = false;
 
         var productId = $(this).closest('.list-products .item').attr('id');
         if (accountId) {
-            addcart(productId);
-            count_click++;
-            $('#cart-number').text(count_click);
-            $('#cart-number').show();
-            // getcartnum();
+            checkcart(productId, isExist);
         }else{
             $('#cart-number').hide();
             alert("Bạn cần đăng nhập trước!");
         }
     });
+    function checkcart(Id, isExist){
+        var count_click;
+        $.ajax({
+            url: '/cart',
+            method: 'GET',
+            data: {
+                page: null,
+                limit: null,
+                accId: accountId
+            },
+            success: function(response){
+                var check = response.listResults;
+                count_click = check.length;
+                check.forEach(function(cart){
+                    if(parseInt(cart.accId) === parseInt(accountId) && parseInt(cart.productId) === parseInt(Id)){
+                        isExist = true;
+                        return;
+                    }
+                })
+                if(isExist === false){
+                    addcart(Id);
+                    count_click++;
+                    $('#cart-number').text(count_click);
+                    $('#cart-number').show();
+                }
+            }
+        })
+    }
     function addcart(Id){
         var data = {
             accId: accountId,
@@ -316,5 +346,8 @@ $(document).ready(function() {
                 }
             }
         })
+    }
+    function formatCurrency(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 });

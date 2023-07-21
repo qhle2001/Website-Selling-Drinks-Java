@@ -60,7 +60,7 @@
     /*top: 30px;*/
     left: 340px;
     right: 0px;
-    width: 900px;
+    width: 850px;
 
 }
 #middle .products-wrapper{
@@ -72,7 +72,7 @@
     margin-bottom: 10px;
 }
 .wrapper-product{
-    width: 450px;
+    width: 400px;
     margin-bottom: 20px;
 }
 .wrapper-product .checkbox-part{
@@ -81,12 +81,17 @@
 .wrapper-product .product-infor{
     display: flex;
     position: relative;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 .wrapper-product .product-infor .key-information{
     display: flex;
 }
 .wrapper-product .product-infor .key-information .product-information{
     position: absolute;
+}
+.wrapper-product .price-number{
+    color: red;
 }
 form{
     position: relative;
@@ -136,9 +141,14 @@ form .delete{
     left: 300px;
 }
 #right{
+    z-index: 1;
     top: 57px;
     position:fixed;
     right: 0px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 320px;
+    height: 650px;
 }
 form .customer-information{
     display: flex;
@@ -146,6 +156,7 @@ form .customer-information{
 }
 #manager{
     position: relative;
+    width: 250px;
     /*border: 1px solid #000;*/
     padding-right: 5px;
     padding-left: 15px;
@@ -158,6 +169,8 @@ form .customer-information{
 }
 #address-customer .customer-address{
     display: flex;
+    margin-bottom: 5px;
+    width: 260px;
 }
 
 #address-customer .customer-address .label {
@@ -176,6 +189,7 @@ form .price-delivery{
     color: red;
 }
 #img-change{
+    z-index: 10;
     position: absolute;
     top: 280px;
     left: -45px;

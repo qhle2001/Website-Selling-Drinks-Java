@@ -2,6 +2,18 @@ $(document).ready(function() {
     var IseventaccessVisible = false;
     var urlParams = new URLSearchParams(window.location.search);
     var accountId = parseInt(urlParams.get('id'));
+    var type = urlParams.get('type');
+    if(!accountId){
+        var user_picture = $('#user_picture');
+        user_picture.empty();
+        var img = $('<img>').attr('src', '../img/user.png').attr('id', 'user');
+        user_picture.append(img);
+    }
+    if(type === 'contact'){
+        setTimeout(function() {
+            $('html, body').animate({ scrollTop: $(document).height() }, 500);
+        }, 500);
+    }
     $.ajax({
         url: '../html/home.html',
         data: {id: accountId},
@@ -22,8 +34,17 @@ $(document).ready(function() {
             },
             success: function(response){
                 var getid = response.listResults;
+                var user_picture = $('#user_picture');
+                user_picture.empty();
                 getid.forEach(function(account){
                     if(account.id === Id){
+                        if(account.picture){
+                            var img = $('<img>').attr('src', account.picture).attr('id', 'user');
+                            user_picture.append(img);
+                        } else{
+                            var img = $('<img>').attr('src', '../img/user.png').attr('id', 'user');
+                            user_picture.append(img);
+                        }
                         $('#customername').text(account.customer_name);
                     }
                 });
@@ -58,7 +79,7 @@ $(document).ready(function() {
         // Sử dụng animate để thực hiện cuộn xuống cuối trang trong 300ms
         $('html, body').animate({ scrollTop: $(document).height() }, 500);
     });
-    $('#user').on('click', function(e){
+    $('#user_picture').on('click', function(e){
         e.stopPropagation();
         if(IseventaccessVisible){
             $('#event-access').hide();
@@ -99,5 +120,11 @@ $(document).ready(function() {
     })
     $('#log-out').on('click', function(){
         window.location.href = '../';
+    })
+    $('#comment-res').on('click', function(){
+        window.location.href='../html/comment.html?id=' + accountId;
+    })
+    $('#setting').on('click', function(){
+        window.location.href='../html/setting.html?id=' + accountId;
     })
 });

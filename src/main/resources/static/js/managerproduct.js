@@ -229,12 +229,14 @@ $(document).ready(function() {
             url: '/product/' + productId,
             method: 'GET',
             success: function(response) {
-                alert(absolutePath);
                 $('#edit-image-preview').attr('src', response.picture);
                 $('#edit-product-id').val(productId);
                 $('#edit-product-title').val(response.title);
                 $('#edit-product-categoryCode').val(response.categoryCode);
                 $('#edit-product-picture').val(response.picture);
+                $('#edit-product-small').val(response.smallsize);
+                $('#edit-product-medium').val(response.medium);
+                $('#edit-product-large').val(response.large);
                 $('#edit-product-form').show();
             },
             error: function() {
@@ -247,6 +249,9 @@ $(document).ready(function() {
         var product = {
             title: $('#edit-product-title').val(),
             categoryCode: $('#edit-product-categoryCode').val(),
+            smallsize: $('#edit-product-small').val(),
+            medium: $('#edit-product-medium').val(),
+            large: $('#edit-product-large').val(),
             picture: $('#edit-product-picture').val()
         };
         // Gửi yêu cầu AJAX để cập nhật thông tin sản phẩm
@@ -262,6 +267,9 @@ $(document).ready(function() {
                 $('#edit-product-title').val('');
                 $('#edit-product-categoryCode').val('');
                 $('#edit-product-picture').val('');
+                $('#edit-product-small').val('');
+                $('#edit-product-medium').val('');
+                $('#edit-product-large').val('');
                 alert('Product updated successfully');
                 // $('#edit-product-form').hide();
             },

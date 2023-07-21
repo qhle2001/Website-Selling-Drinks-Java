@@ -444,9 +444,21 @@ header.sticky #menu .item .a{
 }
 
 #comment-body .list-comment .item .avatar {
+    /*position: relative;*/
     text-align: center;
-    margin-top:13px;
+    margin-top: 13px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*width: 78px; !* Điều chỉnh kích thước hình ảnh tròn *!*/
+    /*height: 78px; !* Điều chỉnh kích thước hình ảnh tròn *!*/
+    /*border-radius: 50%; !* Tạo hình dạng tròn *!*/
+    /*overflow: hidden; !* Ẩn phần nội dung vượt ra khỏi hình dạng tròn *!*/
 }
+/*#comment-body .list-comment .item .avatar img{*/
+/*    width: 100%; !* Đảm bảo hình ảnh điền đầy vùng chứa *!*/
+/*    height: auto; !* Tự động điều chỉnh chiều cao *!*/
+/*}*/
 
 #comment-body .list-comment .item .stars {
     display: flex;

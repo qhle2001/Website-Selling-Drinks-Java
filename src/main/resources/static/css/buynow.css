@@ -3,7 +3,7 @@
     position: relative;
 }
 #banner{
-    position: absolute;
+    position: fixed;
     height: 30px;
     top: 0px;
     left: 0px;
@@ -22,7 +22,7 @@
 }
 
 #left{
-    position: relative;
+    position: fixed;
     top: 30px;
     left: 0px;
     width: 200px;
@@ -176,5 +176,11 @@ button{
 #price-delivery{
     margin-top: 10px;
     font-size: 17px;
+    color: red;
+}
+#event{
+    margin-bottom: 5px;
+}
+#gia{
     color: red;
 }

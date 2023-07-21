@@ -13,15 +13,18 @@ $(document).ready(function(){
     var orderadd= "";
     var ordercusname= "";
     var orderphone= "";
+    var isExist = false;
 
     if (accountId){
         $('#checkbox').prop('disabled', false);
         $('#address-customer').show();
+        $('#add-cart').show();
         getcusadd();
         getusetname();
     } else{
         $('#checkbox').prop('disabled', true);
         $('#address-customer').hide();
+        $('#add-cart').hide();
         username_cus = "";
     }
 
@@ -283,5 +286,61 @@ $(document).ready(function(){
             }
         })
     }
+    $('#comments').on('click', function(){
+        window.location.href = '../html/comment.html?id=' + accountId;
+    })
+
+    $('#add-cart').on('click', function(){
+        var isExist = false;
+        checkcart(itemId, isExist);
+    })
+    function checkcart(Id, isExist){
+        $.ajax({
+            url: '/cart',
+            method: 'GET',
+            data: {
+                page: null,
+                limit: null,
+                accId: accountId
+            },
+            success: function(response){
+                var check = response.listResults;
+                count_click = check.length;
+                check.forEach(function(cart){
+                    if(parseInt(cart.accId) === parseInt(accountId) && parseInt(cart.productId) === parseInt(Id)){
+                        isExist = true;
+                        return;
+                    }
+                })
+                if(isExist === false){
+                    addcart(Id);
+                } else{
+                    alert('Sản phẩm này đã có trong giỏ hàng của bạn!');
+                }
+            }
+        })
+    }
+    function addcart(Id){
+        var data = {
+            accId: accountId,
+            productId: Id
+        }
+        $.ajax({
+            url: '/cart',
+            method: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {
+                alert('Bạn đã thêm vào giỏ hàng thành công!');
+            }
+        });
+    }
+    $('#products').on('click', function(){
+        window.location.href = '../html/showproducts.html?id=' + accountId;
+    })
+    $('#contact').on('click', function(){
+        window.location.href = '../?id=' + accountId + '&type=' + encodeURIComponent('contact');
+
+    })
 
 })

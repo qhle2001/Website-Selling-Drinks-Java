@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cài đặt</title>
+    <link rel="stylesheet" href="../css/setting.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" class="css">
+</head>
+<body>
+  <div id="wrapper">
+      <div id="banner">
+          <div class="menu">
+              <img src="../img/9034957_menu_icon.png" height="21" width="21"/>
+          </div>
+          <div class="logo">LQH</div>
+      </div>
+      <div id="left">
+          <div class="information-banner">
+              <div class="item" id="home">
+                  <img src="../img/3643769_building_home_house_main_menu_icon.png" height="21" width="21" />
+                  <p>trang chủ</p>
+              </div>
+              <div class="item" id="name">
+                  <img src="../img/3643769_building_home_house_main_menu_icon.png" height="21" width="21" />
+                  <p>tên người dùng</p>
+              </div>
+              <div class="item" id="userpicture">
+                  <img src="../img/1291777_price_price tag_pricing_product_icon.png"
+                       height="21" width="21"/>
+                  <p>Ảnh đại diện</p>
+              </div>
+              <div class="item" id="address">
+                  <img src="../img/9110966_comment_text_icon.png" height="21" width="21"/>
+                  <p>Địa chỉ nhận hàng</p>
+              </div>
+              <div class="item" id="pass">
+                  <img src="../img/1954539_call_contact_mobile_phone_telephone_icon.png" height="21" width="21"/>
+                  <p>Mật khẩu</p>
+              </div>
+          </div>
+      </div>
+      <div id="right">
+          <div class="containeritem">
+              <label for="name" id="cusname">Tên người dùng</label>
+              <input type="text" id="user_name" name="name"><br>
+              <button type="button" id="edit-name">Thay đổi</button>
+          </div>
+          <div class="containeritem">
+              <label for="picture">Ảnh đại diện</label>
+              <div class="image-cus"></div>
+              <div>
+                  <input type="file" id="image-input" accept="image/*">
+              </div>
+              <div>
+                  <p id="image-name"></p>
+              </div>
+              <div class="image-cus">
+                  <img id="image-preview" class="image-preview" src="#" alt="Previous Image">
+              </div>
+              <button type="button" id="edit-picture">Thay đổi</button>
+          </div>
+          <div class="containeritem" id="addresscus">
+              <label for="address">Địa chỉ nhận hàng</label>
+<!--              <input type="text" id="address_give" name="address"><br>-->
+          </div>
+          <div class="containeritem">
+              <label for="pass">Mật khẩu</label>
+              <form action="" id="form-login">
+<!--                  <h1 class="form-heading">Edit Password</h1>-->
+                  <div class="formgroup">
+                      <input type="password" class="form-input" id="old-pass" placeholder="Nhập mật khẩu cũ">
+                      <div class="eye">
+                          <i class="far fa-eye-slash"></i>
+                      </div>
+                  </div>
+                  <div class="announce" id="announce-old-pass" style="display: none">Your password incorrect</div>
+                  <div class="formgroup">
+                      <input type="password" class="form-input" id="new-pass" placeholder="Nhập mật khẩu mới">
+                      <div class="eye">
+                          <i class="far fa-eye-slash"></i>
+                      </div>
+                  </div>
+                  <div class="formgroup">
+                      <input type="password" class="form-input" id="retype" placeholder="Nhập lại mật khẩu mới">
+                      <div class="eye">
+                          <i class="far fa-eye-slash"></i>
+                      </div>
+                  </div>
+                  <div class="announce" id="announce-new-pass" style="display: none">You retype new password doesn't match</div>
+                  <div id="actions">
+                      <button class="form-submit" id="cancel" type="button">Cancel</button>
+                      <button class="form-submit" id="action" type="button">Action</button>
+                  </div>
+
+              </form>
+<!--              <input type="text" id="password" name="pass"><br>-->
+<!--              <button type="button" id="edit-pass">Thay đổi</button>-->
+          </div>
+      </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="../js/setting.js"></script>
+</body>
+</html>
